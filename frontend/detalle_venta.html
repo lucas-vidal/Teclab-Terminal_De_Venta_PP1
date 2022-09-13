@@ -15,7 +15,6 @@
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar  closed-sidebar fixed-header">
             
     <div class="app-header header-shadow">
-   
         <div class="app-header__content" >
             <div class="app-header-left">
                 <div style="color: rgb(72, 72, 83); font-size:x-large; font-family: verdana"><b>Terminal</b> </div>
@@ -24,31 +23,13 @@
                 <div> <p>&nbsp  </p> </div>
             </div>
          
-
-            
             <div class="app-header-right">
                 <ul class="header-menu nav">
-                    <li class="nav-item" >
-                        <a href="" class="nav-link">
-                            <i class="nav-link-icon fa fa-search"> </i>
-                            Consultar Producto
-                        </a>
-                    </li>
-                    <li class="btn-group nav-item" >
-                        <a href="historial_compra.html" class="nav-link">
-                            <i class="nav-link-icon fa fa-file-invoice-dollar"></i>
-                            Historial de compras
-                        </a>
-                    </li>
-
-                </ul>  
-                <ul class="header-menu nav">
-                    <div> <p>&nbsp &nbsp &nbsp</p> </div>
-                    <div style="color: rgb(131, 137, 145); font-size:x-large; font-family:verdana;"><b>Compras</b> </div>
+                    <div style="color: rgb(131, 137, 145); font-size:x-large; font-family:verdana;"><b>Ventas / Historial de Ventas / Detalle</b> </div>
                 </ul>        
             </div>
         </div>
-   
+        
     </div>    
 
     <div class="app-main">
@@ -58,20 +39,21 @@
             <div class="scrollbar-sidebar" style="margin-top: 5%;">
 
                 <div class="app-sidebar__inner">
+
                     <ul class="vertical-nav-menu ">
 
                        
 
 
                         <li>
-                            <a href="ventas.html" ">
+                            <a href="" class="mm-active">
                                 <i class="metismenu-icon fa fa-cash-register"></i>
                                 Ventas
                             </a>
                         </li>
 
                         <li>
-                            <a href="compras.html"  class="mm-active">
+                            <a href="compras.html"  >
                                 <i class="metismenu-icon fa fa-shopping-cart"></i>
                                 Compras
                             </a>
@@ -127,83 +109,10 @@
                         <!--CARGA DE PRODUCTO-->
                         <div class="mb-3 col-md-8" style="margin-top: 1%;">
                             <div class="row">
-                                <div class="col-md-12 align-middle">
-                                    <form class="needs-validation" novalidate>
-                                        <div class="form-row">
-
-                                                <div class="col-md-4 mb-3">
-                                                    <input type="number" class="form-control" id="validationCustom01" placeholder="Codigo de Producto" value="" required>
-                                                </div>
-
-                                                <div class="col-md-2 mb-3">
-                                                    <input type="number" class="form-control" id="validationCustom02" placeholder="Cantidad" value="" required>
-                                                </div>
-
-                                                <div class="col-md-2 mb-3 input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="inputGroupPrepend">$</span>
-                                                    </div>
-                                                    <input type="number" class="form-control" id="validationCustom03" placeholder="Compra" required>
-                                                </div>
-
-                                                <div class="col-md-2 mb-3">
-                                                    <button class="btn btn-success" type="submit" style="width: 100%; font-size: 110%;">Agregar</button>
-                                                </div>
-
-                                                <div class="col-md-2 mb-3">
-                                                    <button class="btn btn-danger" type="submit" style="width: 100%; font-size: 110%;">Limpiar</button>
-                                                </div>
-                                        </div>
-                                        <div class="form-row">
-
-                                            <div class="col-md-6 mb-3">
-                                                <input type="text" class="form-control" id="validationCustom03" placeholder="Descripcion" required>
-                                            </div>
-                                            
-                                            
-                                            <div class="col-md-2 mb-3 input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="inputGroupPrepend">%</span>
-                                                </div>
-                                                <input type="number" class="form-control" id="validationCustom03" placeholder="Ganancia" value="35" required>
-                                            </div>
-
-                                            <div class="col-md-2 mb-3">
-                                                <button class="btn btn-primary" type="submit" style="width: 100%; font-size: 110%;">> Aplicar ></button>
-                                            </div>
-
-                                            <div class="col-md-2 mb-3 input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="inputGroupPrepend">$</span>
-                                                </div>
-                                                <input type="number" class="form-control" id="validationCustom03" placeholder="Venta" required>
-                                            </div>
-                                
-                                              
-
-                                        </div>
-                                    </form>
+                                <div class="col-md-12 ">
+                                   <div class="row" style="font-size: large; font-size: 200%; margin-left: 2%;">Cliente: &nbsp<b>Gomez Julia</b> </div>
                         
-                                        <script>
-                                            // Example starter JavaScript for disabling form submissions if there are invalid fields
-                                            (function() {
-                                                'use strict';
-                                                window.addEventListener('load', function() {
-                                                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                                                    var forms = document.getElementsByClassName('needs-validation');
-                                                    // Loop over them and prevent submission
-                                                    var validation = Array.prototype.filter.call(forms, function(form) {
-                                                        form.addEventListener('submit', function(event) {
-                                                            if (form.checkValidity() === false) {
-                                                                event.preventDefault();
-                                                                event.stopPropagation();
-                                                            }
-                                                            form.classList.add('was-validated');
-                                                        }, false);
-                                                    });
-                                                }, false);
-                                            })();
-                                        </script>
+                                   <div class="row" style="font-size: large; font-size: 150%; margin-left: 2%;">Fecha: &nbsp29/06/2022 12:23:06</div>
                                 
                 
                                 </div>
@@ -212,7 +121,7 @@
             
                         <!--PRECIO TOTAL-->
                         <div class="mb-3 col-md-4" style="margin-top: 1%;">
-                            <div class="card widget-content bg-warning widget-numbers text-center text-white"  style="font-size: 280%;" >
+                            <div class="card widget-content bg-midnight-bloom widget-numbers text-center text-white"  style="font-size: 280%;" >
 
                                 <span>$ 1.568,30</span>
                             </div>
@@ -231,7 +140,7 @@
                                     <th>Codigo</th>
                                     <th>Descripcion</th>
                                     <th class="text-center">Cantidad</th>
-                                    <th class="text-center">Precio compra</th>
+                                    <th class="text-center">Precio</th>
                                     <th class="text-center">Deshacer</th>
 
                                 </tr>
@@ -292,9 +201,14 @@
                             </table>
                         </div>
                         <!--FIN DE COMPRA-->
-                        <div class="d-block text-center card-footer">
-                            <button class="btn-wide btn btn-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i> CANCELAR</button>
-                            <button class="btn-wide btn btn-success"><i class="pe-7s-check btn-icon-wrapper"> </i>  FINALIZAR</button>
+                        <div class="d-block card-footer">
+    
+                            
+                        
+                            <div class="text-center ">
+                                <button class="btn-wide btn btn-danger"> CERRAR</button>
+                                
+                            </div>
                         </div>
                     </div>
 

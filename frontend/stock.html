@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Punto de Venta v1.0</title>
+    <link rel="icon" type="image/ico" href="./assets/icons/icon.ico" />
     <link href="./css/main.css" rel="stylesheet"></head>
 </head>
 
@@ -18,47 +19,21 @@
    
    
         
-        
         <div class="app-header__content" >
-            
-            
             <div class="app-header-left">
-
-                <div style="color: rgb(42, 42, 134); font-size:xx-large; font-family: verdana">PUNTO DE VENTA </div>
-                <div> <p>&nbsp  &nbsp  &nbsp</p> </div>
-                
-      
+                <div style="color: rgb(72, 72, 83); font-size:x-large; font-family: verdana"><b>Terminal</b> </div>
+                <div> <p>&nbsp  &nbsp </p> </div>
+                <div style="color: rgb(42, 42, 134); font-size:x-large; font-family: verdana">Punto de Venta </div>
+                <div> <p>&nbsp  </p> </div>
             </div>
-            
-            <div class="app-header-center">
-                <div style="color: rgb(131, 137, 145); font-size:xx-large; font-family:verdana;"><b>STOCK</b> </div>
-            </div>
-
+         
             <div class="app-header-right">
                 <ul class="header-menu nav">
-                    <li class="nav-item" >
-                        <a href="" class="nav-link">
-                            <i class="nav-link-icon fa fa-search"> </i>
-                            Consultar Producto
-                        </a>
-                    </li>
-                    <li class="btn-group nav-item" >
-                        <a href="" class="nav-link">
-                            <i class="nav-link-icon fa fa-file-invoice-dollar"></i>
-                            Historial de Ventas
-                        </a>
-                    </li>
-
+                    <div style="color: rgb(131, 137, 145); font-size:x-large; font-family:verdana;"><b>Stock</b> </div>
                 </ul>        
             </div>
-
-            
-
-
-            
-
-
         </div>
+        
     </div>    
 
     <div class="app-main">
@@ -136,7 +111,7 @@
                 <div class="card " style="margin: -2%;">
                     <div class="row"  >
                         <!--CARGA DE PRODUCTO-->
-                        <div class="mb-3 col-md-12" style="margin-top: 1%;">
+                        <div class="mb-3 col-md-12" style="margin-top: 1%;" id="test">
                             <div class="row">
                                 <div class="col-md-12 align-middle">
                                     <form class="needs-validation" novalidate>
@@ -190,7 +165,7 @@
                                                     <button class="btn btn-primary" type="submit" style="width: 100%; font-size: 110%;">Modificar</button>
                                                 </div>
                                                 <div class="col-md-1 mb-3">
-                                                    <button class="btn btn-danger" type="submit" style="width: 100%; font-size: 110%;">Borrar</button>
+                                                    <button class="btn btn-danger" type="submit" style="width: 100%; font-size: 110%;">Limpiar</button>
                                                 </div>
                                         </div>
                                     
@@ -264,7 +239,7 @@
                                         <td class="text-center">Unidad</td>
                                         <td class="text-center">$260,50</td>
                                         <td class="text-center">
-                                            <button class="mr-2 btn-icon btn-icon-only btn btn-outline-primary"><i class="pe-7s-settings btn-icon-wrapper"> </i></button>
+                                            <button class="mr-2 btn-icon btn-icon-only btn btn-outline-primary" href="#test"><i class="pe-7s-settings btn-icon-wrapper"> </i></button>
                                         </td>
                                         <td class="text-center">
                                             <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
