@@ -128,30 +128,30 @@
                         <div class="mb-3 col-md-8" style="margin-top: 1%;">
                             <div class="row">
                                 <div class="col-md-12 align-middle">
-                                    <form class="needs-validation" novalidate>
+                                    <form class="needs-validation" id="cargaItem" novalidate>
                                         <div class="form-row">
                                                 <div class="col-md-4 mb-3">
                                                 
-                                                    <input type="number" class="form-control" id="validationCustom01" placeholder="Codigo de Producto" value="" required>
+                                                    <input type="number" class="form-control" id="codigo" placeholder="Codigo de Producto" value="" required>
             
                                                 </div>
                                                 <div class="col-md-2 mb-3">
-                                                    <input type="number" class="form-control" id="validationCustom02" placeholder="Cantidad" value="" required>
+                                                    <input type="number" class="form-control" id="cantidad" placeholder="Cantidad" value="" required>
                                                 </div>
                                                 <div class="col-md-2 mb-3">
-                                                    <input type="text" class="form-control" id="validationCustom02" placeholder="Unidad" value="" required>
+                                                    <input type="text" class="form-control" id="unidad" placeholder="Unidad" value="" >
                                                 </div>
                                                 <div class="col-md-2 mb-3">
-                                                    <button class="btn btn-success" type="submit" style="width: 100%; font-size: 110%;">Agregar</button>
+                                                    <button ondblclick="agregarItem(codigo1, cantidad1)" class="btn btn-success"  style="width: 100%; font-size: 110%;">Agregar</button>
                                                 </div>
                                                 <div class="col-md-2 mb-3">
-                                                    <button class="btn btn-danger" type="submit" style="width: 100%; font-size: 110%;">Limpiar</button>
+                                                    <button class="btn btn-danger" type="reset" style="width: 100%; font-size: 110%;">Limpiar</button>
                                                 </div>
                                         </div>
                                         <div class="form-row">
                                                 <div class="col-md-12 mb-3">
                                                     
-                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Descripcion" required>
+                                                    <input type="text" class="form-control" id="descripcion" placeholder="Descripcion" >
             
                                                 </div>
                                  
@@ -159,26 +159,7 @@
                                     
                                     </form>
                         
-                                        <script>
-                                            // Example starter JavaScript for disabling form submissions if there are invalid fields
-                                            (function() {
-                                                'use strict';
-                                                window.addEventListener('load', function() {
-                                                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                                                    var forms = document.getElementsByClassName('needs-validation');
-                                                    // Loop over them and prevent submission
-                                                    var validation = Array.prototype.filter.call(forms, function(form) {
-                                                        form.addEventListener('submit', function(event) {
-                                                            if (form.checkValidity() === false) {
-                                                                event.preventDefault();
-                                                                event.stopPropagation();
-                                                            }
-                                                            form.classList.add('was-validated');
-                                                        }, false);
-                                                    });
-                                                }, false);
-                                            })();
-                                        </script>
+                                        
                                 
                 
                                 </div>
@@ -203,25 +184,52 @@
                                 <thead>
                                 <tr>
                                     <th class="text-center">Item</th>
-                                    <th>Codigo</th>
-                                    <th>Descripcion</th>
+                                    <th class="text-center">Codigo</th>
+                                    <th class="text-left">Descripcion</th>
                                     <th class="text-center">Cantidad</th>
                                     <th class="text-center">Precio</th>
                                     <th class="text-center">Deshacer</th>
 
                                 </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="text-center">1</td>
-                                        <td class="text-left">790040138898</td>
-                                        <td class="text-left">Coca Cola 2,5L Botella</td>
-                                        <td class="text-center">3</td>
-                                        <td class="text-center">$260,50</td>
-                                        <td class="text-center">
-                                            <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
-                                        </td>
-                                    </tr>
+                                <tbody id="registro">
+                                   
+                        
+                            
+                                </tbody>
+                            </table>
+                        </div>
+                        <!--FIN DE COMPRA-->
+                        <div class="d-block card-footer">
+    
+                            
+                        
+                            <div class="text-center ">
+                                <button class="btn-wide btn btn-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i> CANCELAR</button>
+                                <button class="btn-wide btn btn-success"><i class="pe-7s-check btn-icon-wrapper"> </i>  FINALIZAR</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="./js/main.js"></script>
+</body>
+
+</html>
+
+
+
+<!--
+
                                     <tr>
                                         <td class="text-center">2</td>
                                         <td class="text-left">790040138898</td>
@@ -262,29 +270,5 @@
                                             <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
                                         </td>
                                     </tr>
-                            
-                                </tbody>
-                            </table>
-                        </div>
-                        <!--FIN DE COMPRA-->
-                        <div class="d-block card-footer">
-    
-                            
-                        
-                            <div class="text-center ">
-                                <button class="btn-wide btn btn-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i> CANCELAR</button>
-                                <button class="btn-wide btn btn-success"><i class="pe-7s-check btn-icon-wrapper"> </i>  FINALIZAR</button>
-                            </div>
-                        </div>
-                    </div>
 
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-</body>
-
-</html>
+-->
