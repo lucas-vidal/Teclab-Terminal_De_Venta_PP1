@@ -5,7 +5,42 @@ let total = 0;
 let item = 0;
 
 //  const API_URL = 'http://jsonplaceholder.typicode.com';
+<<<<<<< HEAD
 //   const API_URL = 'http://localhost:3000';
+=======
+   const API_URL = 'http://localhost:3000';
+
+function cargar(){
+       let formData={
+       "DNI": 88999000,
+       "Nombre": "Gonzalo",
+       "Apellido": "Vidal"
+   }
+
+   fetch("http://localhost:3000/costumers", {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData),
+    mode: 'no-cors'
+    })
+    .then(res=>{
+        console.log(res.json())
+        return res.json()
+        
+    })
+}
+
+
+
+
+
+
+
+
+>>>>>>> d21f8273c2205695484788bc42561078f3fabfea
 
 
 // const HTMLResponse = document.querySelector("#registro");
