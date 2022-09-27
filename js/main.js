@@ -5,23 +5,23 @@ let total = 0;
 let item = 0;
 
 //  const API_URL = 'http://jsonplaceholder.typicode.com';
-  const API_URL = 'http://localhost:3000';
+//   const API_URL = 'http://localhost:3000';
 
 
-const HTMLResponse = document.querySelector("#registro");
+// const HTMLResponse = document.querySelector("#registro");
 
-fetch(API_URL + '/products',
-{ method: 'GET',
-   mode: 'no-cors',
-   headers: {
-      'Content-Type': 'application/json',
-    }
-})
-.then((response) => response.body)
-.then((users) => {
-    const tpl = users.map((user) => '<li>' + user.Descripcion + '</li>');
-    HTMLResponse.innerHTML = '<ul>' + tpl + '</ul>';
-    });
+// fetch(API_URL + '/products',
+// { method: 'GET',
+//    mode: 'no-cors',
+//    headers: {
+//       'Content-Type': 'application/json',
+//     }
+// })
+// .then((response) => response.body)
+// .then((users) => {
+//     const tpl = users.map((user) => '<li>' + user.Descripcion + '</li>');
+//     HTMLResponse.innerHTML = '<ul>' + tpl + '</ul>';
+//     });
 
 
 // const xhr = new XMLHttpRequest();
