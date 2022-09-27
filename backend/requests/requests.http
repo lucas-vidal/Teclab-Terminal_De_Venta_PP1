@@ -1,0 +1,71 @@
+@api_prod = http://localhost:3000/products
+
+### Consultar todo la table stock
+GET {{api_prod}}
+
+### Agregar un producto a la tabla
+POST {{api_prod}}
+Content-Type: application/json
+
+     {
+          "code": 989898,
+          "brand": "La Morenita",
+          "description": "Cafe de 1kg",
+          "price": 2554,
+          "quentity": 22,
+          "unit": "Pack"
+     }
+
+
+### Consultar un producto por el codigo
+GET {{api_prod}}/100103
+
+### Contar total de productos
+GET {{api_prod}}/count
+
+### Eliminar un producto por el codigo
+DELETE {{api_prod}}/100103
+
+### Actualizar un producto
+PUT {{api_prod}}/100103
+Content-Type: application/json
+
+{  
+     "brand": "Manaos",
+     "description": "Botella plastico 1,25lts",
+     "price": 100,
+     "quentity": 22,
+     "unit": "Pack"
+}
+
+
+@api_customer = http://localhost:3000/customers
+
+### Consultar todo la table stock
+GET {{api_customer}}
+
+###
+POST {{api_customer}}
+Content-Type: application/json
+
+     {
+          "dni": 988565,
+          "name": "Fernando",
+          "surname": "Vidal"
+     }
+
+
+### Consultar un cliente por dni
+GET {{api_customer}}/28564556
+
+### Eliminar un producto por el codigo
+DELETE {{api_customer}}/29885463
+
+### Actualizar un producto
+PUT {{api_customer}}/29885463
+Content-Type: application/json
+
+     {
+          "name": "Facundo",
+          "surname": "Vidal"
+     }
