@@ -4,31 +4,31 @@ let cantidad;
 let total = 0;
 let item = 0;
 
-//  const API_URL = 'http://jsonplaceholder.typicode.com';
-   const API_URL = 'http://localhost:3000';
+  const API_URL = 'http://jsonplaceholder.typicode.com';
+//    const API_URL = 'http://localhost:3000';
 
-function cargar(){
-       let formData={
-       "DNI": 88999000,
-       "Nombre": "Gonzalo",
-       "Apellido": "Vidal"
-   }
+// function cargar(){
+//        let formData={
+//        "DNI": 88999000,
+//        "Nombre": "Gonzalo",
+//        "Apellido": "Vidal"
+//    }
 
-   fetch("http://localhost:3000/costumers", {
-    method: 'POST',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(formData),
-    mode: 'no-cors'
-    })
-    .then(res=>{
-        console.log(res.json())
-        return res.json()
+//    fetch("http://localhost:3000/costumers", {
+//     method: 'POST',
+//     headers: {
+//         'Accept': 'application/json',
+//         'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(formData),
+//     mode: 'no-cors'
+//     })
+//     .then(res=>{
+//         console.log(res.json())
+//         return res.json()
         
-    })
-}
+//     })
+// }
 
 
 
@@ -39,36 +39,37 @@ function cargar(){
 
 
 
-// const HTMLResponse = document.querySelector("#registro");
+const HTMLResponse = document.querySelector("#registro");
 
-// fetch(API_URL + '/products',
-// { method: 'GET',
-//    mode: 'no-cors',
-//    headers: {
-//       'Content-Type': 'application/json',
-//     }
-// })
-// .then((response) => response.body)
-// .then((users) => {
-//     const tpl = users.map((user) => '<li>' + user.Descripcion + '</li>');
-//     HTMLResponse.innerHTML = '<ul>' + tpl + '</ul>';
-//     });
+fetch(API_URL + '/users')
+.then((response) => response.json())
+.then((users) => {
+    users.forEach((user) => {
+    let elem = document.createElement("li")
+    elem.appendChild(
+        document.createTextNode(user.name)
+        )
+   
+});
+ul.appendChild(elem);
+});
 
-
+ HTMLResponse.appendChild(ul);
 // const xhr = new XMLHttpRequest();
 
 // function onRequestHandeler(){
 //     if (this.readyState == 4 && this.status == 200){
+//         console.log("hecho")
 //         const data = JSON.parse(this.response);
    
 //         const HTMLResponse = document.querySelector("#registro")
 
-//         const tpl = data.map((user) => '<li>' + user.Descripcion + '</li>');
+//         const tpl = data.map((user) => '<li>' + user.name + '</li>');
 //         HTMLResponse.innerHTML = '<ul>' + tpl + '</ul>';
 //     }
 // }
 // xhr.addEventListener("load", onRequestHandeler);
-// xhr.open("GET", API_URL + '/products');
+// xhr.open("GET", API_URL + '/customers');
 // xhr.send();
 
 
@@ -78,9 +79,9 @@ function cargar(){
 
 
 
-var descripcion = "Fideito Moñito";
+var descripcion;
 
-var precio = 100;
+var precio;
 
 function agregarItem(codigo, cantidad)
 {
