@@ -14,15 +14,16 @@ surname VARCHAR(100) NOT NULL,
 );
 
 CREATE TABLE suppliers (
-supplier VARCHAR(100) NOT NULL PRIMARY KEY,
-addres VARCHAR(100) ,
+id_supplier INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+supplier VARCHAR(100) NOT NULL,
+address VARCHAR(100),
+city VARCHAR(100),
 phone VARCHAR(100) NOT NULL,
-
 );
 
 CREATE TABLE id_sales (
 id_sale INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-data_time DATETIME NOT NULL,
+data_time TIMESTAMP NOT NULL,
 dni_customer INT,
 );
 
@@ -35,8 +36,8 @@ quantity INT NOT NULL,
 
 CREATE TABLE id_purchases (
 id_purchase INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-data_time DATETIME NOT NULL,
-supplier INT,
+data_time TIMESTAMP NOT NULL,
+id_supplier INT,
 );
 
 CREATE TABLE purchases (
