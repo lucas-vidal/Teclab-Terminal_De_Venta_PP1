@@ -1,6 +1,5 @@
 
 import {Router} from 'express'
-
 import { getSuppliers, getSupplierById, createNewSupplier, deleteSupplierById, updateSupplierById
         } from '../controllers/suppliers.controller.js'
 
@@ -15,6 +14,5 @@ router.post('/suppliers', createNewSupplier)
 router.delete('/suppliers/:id', deleteSupplierById)
 //Actualizar productos
 router.put('/suppliers/:id', updateSupplierById)
-
 
 export default router

@@ -4,16 +4,9 @@ let cantidad;
 let total = 0;
 let item = 0;
 
-<<<<<<< HEAD
-//  const API_URL = 'http://jsonplaceholder.typicode.com';
-<<<<<<< HEAD
-//   const API_URL = 'http://localhost:3000';
-=======
-   const API_URL = 'http://localhost:3000';
-=======
-   const API_URL1 = 'http://jsonplaceholder.typicode.com';
-    const API_URL2 = 'http://localhost:3000/customers';
->>>>>>> e451447dab932c27c4872b1ea18c96b823faf5af
+const API_URL1 = 'http://jsonplaceholder.typicode.com';
+const API_URL2 = 'http://localhost:3000/customers';
+
 
  const test = async () => {
     try {
@@ -50,8 +43,6 @@ function cargarProductos(){
 
 };
 
-
->>>>>>> d21f8273c2205695484788bc42561078f3fabfea
 
 
 // const HTMLResponse = document.querySelector("#registro");

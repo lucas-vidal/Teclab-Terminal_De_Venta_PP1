@@ -1,6 +1,5 @@
 
 import {Router} from 'express'
-
 import { createNewCustomer, getCustomers, getCustomerByDni, deleteCustomerByDni, updateCustomerByDni
         } from '../controllers/customers.controller.js'
 
@@ -15,6 +14,5 @@ router.post('/customers', createNewCustomer)
 router.delete('/customers/:dni', deleteCustomerByDni)
 //Actualizar datos de cliente
 router.put('/customers/:dni', updateCustomerByDni)
-
 
 export default router

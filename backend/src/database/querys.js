@@ -1,12 +1,5 @@
 export default{
-<<<<<<< HEAD
-    getAllProducts : 'SELECT * FROM Stock',
-    addNewProduct : 'INSERT INTO Stock (CodigoArticulo, Marca, Descripcion, Precio, Stock, Unidad) VALUES (@CodigoArticulo, @Marca, @Descripcion, @Precio, @Stock, @Unidad)',
-    getProductByCode : 'SELECT * FROM Stock WHERE CodigoArticulo = @code',
-    deleteProductByCode : 'DELETE FROM Stock WHERE CodigoArticulo = @code',
-    getTotalProducts : 'SELECT COUNT (*) FROM Stock',
-    updateProductsByCode : 'UPDATE Stock SET Marca = @Marca, Descripcion = @Descripcion, Precio = @Precio, Stock = @Stock, Unidad = @Unidad WHERE CodigoArticulo = @code'
-=======
+
     //Productos
     getAllProducts : 'SELECT * FROM products',
     addNewProduct : 'INSERT INTO products (code, brand, description, price, quentity, unit) VALUES (@code, @brand, @description, @price, @quentity, @unit)',
@@ -20,12 +13,7 @@ export default{
     addNewCustomer : 'INSERT INTO customers (dni, name, surname) VALUES (@dni, @name, @surname)',
     getCustomerByDni : 'SELECT * FROM customers WHERE dni = @dni',
     deleteCustomerByDni : 'DELETE FROM customers WHERE dni = @dni',
-<<<<<<< HEAD
     updateCustomerByDni : 'UPDATE customers SET name = @name, surname = @surname WHERE dni = @dni',
-=======
-    updateCustomerByDni : 'UPDATE customers SET name = @name, surname = @surname WHERE dni = @dni'
->>>>>>> d21f8273c2205695484788bc42561078f3fabfea
->>>>>>> 24e25486f4a15eb16b255d16f06288d7aa49f518
 
     //Proveedores
     getAllSuppliers : 'SELECT * FROM suppliers',
