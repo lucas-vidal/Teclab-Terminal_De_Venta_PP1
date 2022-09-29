@@ -1,4 +1,8 @@
 {
+<<<<<<< HEAD
+    "presets": ["@babel/preset-env"]
+=======
     "presets": ["@babel/preset-env"],
     "plugins": ["@babel/plugin-transform-runtime"]
+>>>>>>> d21f8273c2205695484788bc42561078f3fabfea
 }

@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+@api = http://localhost:3000/products
+
+### Consultar todo la table stock
+GET {{api}}
+
+### Agregar un producto a la tabla
+POST {{api}}
+Content-Type: application/json
+
+     {
+          "CodigoArticulo": 888888,
+          "Marca": "Repoin",
+          "Descripcion": "Cigarrillo bien piola",
+          "Precio": 2554.45,
+          "Stock": 22,
+          "Unidad": "Packa"
+=======
 @api_prod = http://localhost:3000/products
 
 ### Consultar todo la table stock
@@ -14,10 +32,32 @@ Content-Type: application/json
           "price": 2554,
           "quentity": 22,
           "unit": "Pack"
+>>>>>>> d21f8273c2205695484788bc42561078f3fabfea
      }
 
 
 ### Consultar un producto por el codigo
+<<<<<<< HEAD
+GET {{api}}/8754687
+
+### Contar total de productos
+GET {{api}}/count
+
+### Eliminar un producto por el codigo
+DELETE {{api}}/888888
+
+### Actualizar un producto
+PUT {{api}}/8754687
+Content-Type: application/json
+
+{  
+     "Marca": "Melbuour",
+     "Descripcion": "Cigarrilo melbuour de 120",
+     "Precio": 100,
+     "Stock": 22,
+     "Unidad": "Pack"
+}
+=======
 GET {{api_prod}}/100103
 
 ### Contar total de productos
@@ -69,3 +109,4 @@ Content-Type: application/json
           "name": "Facundo",
           "surname": "Vidal"
      }
+>>>>>>> d21f8273c2205695484788bc42561078f3fabfea
