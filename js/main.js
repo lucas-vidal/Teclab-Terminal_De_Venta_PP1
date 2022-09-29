@@ -4,34 +4,99 @@ let cantidad;
 let total = 0;
 let item = 0;
 
-const API_URL1 = 'http://jsonplaceholder.typicode.com';
-const API_URL2 = 'http://localhost:3000/customers';
 
+const API = 'http://localhost:3000';
 
- const test = async () => {
+const cargarProductos = async () => {
     try {
-        const respuesta = await fetch(API_URL2);
-        console.log(respuesta);
-        
+        const respuesta = await fetch(API + '/products');
         const products = await respuesta.json();
-        // const products = JSON.parse(this.respuesta);
 
-        const HTMLResponse = document.querySelector("#registro")
-        const tpl = products.map((product) => '<li>' + product.code + '</li>' );
+        const HTMLResponse = document.querySelector("#productos")
+        const tpl = products[0].map((product) => '<tr><td class="text-center">'+ product.code +'</td><td class="text-center">'+ product.brand +'</td><td class="text-left">'+ product.description + '</td><td class="text-center">'+ product.price + '</td><td class="text-center">'+ product.quentity +'</td><td class="text-center">'+ product.unit +'</td><td class="text-center"> <button onclick="modificarItem(\'#registro' + product.code + '\')" class="mr-2 btn-icon btn-icon-only btn btn-outline-primary"><i class="pe-7s-settings btn-icon-wrapper"> </i></button> </td><td class="text-center"> <button onclick="eliminarItem(\'#registro' + product.code + '\')" class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button> </td></tr>');
 
-    //    HTMLResponse.insertAdjacentHTML("afterbegin", '<ul>' + tpl + '</ul>');
-         HTMLResponse.innerHTML = '<ul>' + tpl + '</ul>';
-console.log(products)
-
+        HTMLResponse.insertAdjacentHTML("afterbegin",  tpl );
+        console.log(products)
     } catch (error) {
         console.log(error)
     }
 }
+cargarProductos();
 
-test();
+
+const cargarClientes = async () => {
+    try {
+        const respuesta = await fetch(API + '/customers');
+        const customers = await respuesta.json();
+
+        const HTMLResponse = document.querySelector("#clientes")
+        const tpl = customers[0].map((customer) => '<tr><td class="text-center">'+ customer.dni +'</td><td class="text-center">'+ customer.name +'</td><td class="text-left">'+ customer.surname + '</td><td class="text-center"> <button onclick="modificarItem(\'#registro' + customer.dni + '\')" class="mr-2 btn-icon btn-icon-only btn btn-outline-primary"><i class="pe-7s-settings btn-icon-wrapper"> </i></button> </td><td class="text-center"> <button onclick="eliminarItem(\'#registro' + customer.dni + '\')" class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button> </td></tr>');
+
+        HTMLResponse.insertAdjacentHTML("afterbegin",  tpl );
+        console.log(customers)
+    } catch (error) {
+        console.log(error)
+    }
+}
+cargarClientes();
+
+const cargarProveedores = async () => {
+    try {
+        const respuesta = await fetch(API + '/suppliers');
+        const suppliers = await respuesta.json();
+
+        const HTMLResponse = document.querySelector("#proveedores")
+        const tpl = suppliers[0].map((supplier) => '<tr><td class="text-center">'+ supplier.id +'</td><td class="text-center">'+ supplier.supplier +'</td><td class="text-center">'+ supplier.address +'</td><td class="text-center">'+ supplier.phone + '</td><td class="text-center"> <button onclick="modificarProveedor(' + supplier.id + ')" class="mr-2 btn-icon btn-icon-only btn btn-outline-primary"><i class="pe-7s-settings btn-icon-wrapper"> </i></button> </td><td class="text-center"> <button onclick="eliminarPorveedor(' + supplier.id + ')" class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button> </td></tr>');
+
+        HTMLResponse.insertAdjacentHTML("afterbegin",  tpl );
+        console.log(suppliers)
+    } catch (error) {
+        console.log(error)
+    }
+}
+cargarProveedores();
 
 
-function cargarProductos(){
+
+function modificarProveedor(){
+
+    const cargarProveedor = async () => {
+        try {
+            const respuesta = await fetch(API + '/suppliers/1');
+            const suppliers = await respuesta.json();
+    
+            // const HTMLResponse = document.querySelector("#test")
+             const tpl = suppliers.map((supplier) => supplier.address);
+    
+            // HTMLResponse.insertAdjacentHTML("afterbegin",  tpl );
+
+            console.log(suppliers[0].address)
+            console.log("ante ejecutada")
+            //  document.getElementById('#supplier').value = 2342;
+            // document.querySelector('#supplier').value = 5
+            // document.getElementById("formula").children.namedItem("#address").value = 1234;
+console.log("ejecutada")
+  
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    cargarProveedor();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function cargarProductos2(){
 
     const app = document.querySelector("#registro");
 

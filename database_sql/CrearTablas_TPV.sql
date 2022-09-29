@@ -15,7 +15,7 @@ surname VARCHAR(100) NOT NULL,
 );
 
 CREATE TABLE suppliers (
-id_supplier INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
 supplier VARCHAR(100) NOT NULL,
 address VARCHAR(100),
 city VARCHAR(100),
@@ -48,5 +48,6 @@ price INT NOT NULL,
 quantity INT NOT NULL,
 
 )
+
 
 
