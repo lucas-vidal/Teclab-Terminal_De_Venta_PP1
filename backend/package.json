@@ -17,7 +17,7 @@
 >>>>>>> d21f8273c2205695484788bc42561078f3fabfea
   },
   "keywords": [],
-  "author": "",
+  "author": "Lucas Vidal",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
