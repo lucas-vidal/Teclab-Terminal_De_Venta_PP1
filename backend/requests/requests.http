@@ -1,27 +1,11 @@
-<<<<<<< HEAD
-@api = http://localhost:3000/products
 
-### Consultar todo la table stock
-GET {{api}}
-
-### Agregar un producto a la tabla
-POST {{api}}
-Content-Type: application/json
-
-     {
-          "CodigoArticulo": 888888,
-          "Marca": "Repoin",
-          "Descripcion": "Cigarrillo bien piola",
-          "Precio": 2554.45,
-          "Stock": 22,
-          "Unidad": "Packa"
-=======
+//PRDUCTOS
 @api_prod = http://localhost:3000/products
 
-### Consultar todo la table stock
+### REQUEST PRODUCT
 GET {{api_prod}}
 
-### Agregar un producto a la tabla
+### ADD PRODUCT
 POST {{api_prod}}
 Content-Type: application/json
 
@@ -32,41 +16,19 @@ Content-Type: application/json
           "price": 2554,
           "quentity": 22,
           "unit": "Pack"
->>>>>>> d21f8273c2205695484788bc42561078f3fabfea
      }
 
 
-### Consultar un producto por el codigo
-<<<<<<< HEAD
-GET {{api}}/8754687
-
-### Contar total de productos
-GET {{api}}/count
-
-### Eliminar un producto por el codigo
-DELETE {{api}}/888888
-
-### Actualizar un producto
-PUT {{api}}/8754687
-Content-Type: application/json
-
-{  
-     "Marca": "Melbuour",
-     "Descripcion": "Cigarrilo melbuour de 120",
-     "Precio": 100,
-     "Stock": 22,
-     "Unidad": "Pack"
-}
-=======
+### REQUEST PRODUCT BY CODE
 GET {{api_prod}}/100103
 
-### Contar total de productos
+### COUNT TOTAL PRODUCT
 GET {{api_prod}}/count
 
-### Eliminar un producto por el codigo
+### DELETE PRODUCT
 DELETE {{api_prod}}/100103
 
-### Actualizar un producto
+### UPDATE PRODUCT
 PUT {{api_prod}}/100103
 Content-Type: application/json
 
@@ -79,29 +41,31 @@ Content-Type: application/json
 }
 
 
+
+
+//CLIENTES
 @api_customer = http://localhost:3000/customers
 
-### Consultar todo la table stock
+### REQUEST CUSTOMERS
 GET {{api_customer}}
 
-###
+### ADD CUSTOMERS
 POST {{api_customer}}
 Content-Type: application/json
 
      {
-          "dni": 988565,
-          "name": "Fernando",
-          "surname": "Vidal"
+          "dni": 56745677,
+          "name": "Daniel",
+          "surname": "Varela"
      }
 
-
-### Consultar un cliente por dni
+### REQUEST CUSTOMERS BY DNI
 GET {{api_customer}}/28564556
 
-### Eliminar un producto por el codigo
+### DLETE CUSTOMERS
 DELETE {{api_customer}}/29885463
 
-### Actualizar un producto
+### UPDATE CUSTOMERS
 PUT {{api_customer}}/29885463
 Content-Type: application/json
 
@@ -109,4 +73,4 @@ Content-Type: application/json
           "name": "Facundo",
           "surname": "Vidal"
      }
->>>>>>> d21f8273c2205695484788bc42561078f3fabfea
+

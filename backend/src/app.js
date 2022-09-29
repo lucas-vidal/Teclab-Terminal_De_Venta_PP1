@@ -2,7 +2,6 @@ import express from 'express'
 import config from './config.js';
 import cors from 'cors'
 
-import productsRoutes from './routes/products.routes'
 import productsRoutes from './routes/products.routes.js';
 import customersRoutes from './routes/customers.routes.js';
 import suppliersRoutes from './routes/suppliers.routes.js';

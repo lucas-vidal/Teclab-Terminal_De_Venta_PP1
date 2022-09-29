@@ -13,15 +13,15 @@ const API_URL2 = 'http://localhost:3000/customers';
         const respuesta = await fetch(API_URL2);
         console.log(respuesta);
         
-        // const products = await respuesta.json();
-        const products = JSON.parse(this.respuesta);
+        const products = await respuesta.json();
+        // const products = JSON.parse(this.respuesta);
 
         const HTMLResponse = document.querySelector("#registro")
         const tpl = products.map((product) => '<li>' + product.code + '</li>' );
 
     //    HTMLResponse.insertAdjacentHTML("afterbegin", '<ul>' + tpl + '</ul>');
          HTMLResponse.innerHTML = '<ul>' + tpl + '</ul>';
-
+console.log(products)
 
     } catch (error) {
         console.log(error)
