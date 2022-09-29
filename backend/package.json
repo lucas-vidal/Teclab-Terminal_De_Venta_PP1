@@ -10,7 +10,7 @@
     "start": "node dist"
   },
   "keywords": [],
-  "author": "",
+  "author": "Lucas Vidal",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
