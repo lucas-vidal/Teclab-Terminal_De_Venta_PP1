@@ -74,3 +74,40 @@ Content-Type: application/json
           "surname": "Vidal"
      }
 
+
+
+
+
+//CLIENTES
+@api_suppliers = http://localhost:3000/suppliers
+
+### REQUEST CUSTOMERS
+GET {{api_suppliers}}
+
+### ADD CUSTOMERS
+POST {{api_suppliers}}
+Content-Type: application/json
+
+     {
+          "supplier": "Proveedor1",
+          "address": "Avenida 1",
+          "city": "Glew",
+          "phone": "11331144"
+     }
+
+### REQUEST CUSTOMERS BY DNI
+GET {{api_suppliers}}/2
+
+### DLETE CUSTOMERS
+DELETE {{api_suppliers}}/8
+
+### UPDATE CUSTOMERS
+PUT {{api_suppliers}}/29885463
+Content-Type: application/json
+
+     {
+          "supplier": "Proveedor1",
+          "address": "Avenida 1",
+          "city": "Glew",
+          "phone": "11331144"
+     }

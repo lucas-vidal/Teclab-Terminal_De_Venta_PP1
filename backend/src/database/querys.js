@@ -17,9 +17,9 @@ export default{
 
     //Proveedores
     getAllSuppliers : 'SELECT * FROM suppliers',
-    addNewSupplier : 'INSERT INTO suppliers (supplier, adress, city, phone) VALUES (@supplier, @adress, @city, @phone)',
+    addNewSupplier : 'INSERT INTO suppliers (supplier, address, city, phone) VALUES (@supplier, @address, @city, @phone)',
     getSupplierById : 'SELECT * FROM suppliers WHERE id = @id',
     deleteSupplierById : 'DELETE FROM suppliers WHERE id = @id',
-    updateSupplierById : 'UPDATE suppliers SET supplier = @supplier, adress = @address, city = @city, phone = @phone WHERE id = @id'
+    updateSupplierById : 'UPDATE suppliers SET supplier = @supplier, address = @address, city = @city, phone = @phone WHERE id = @id'
     
 }

@@ -17,9 +17,6 @@ app.set('port', config.port)
 app.use(express.json());
 app.use(express.urlencoded({extended : false}));
 
-
-app.use(productsRoutes)
-
 app.use(productsRoutes);
 app.use(customersRoutes);
 app.use(suppliersRoutes);

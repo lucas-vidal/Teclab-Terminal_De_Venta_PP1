@@ -32,7 +32,7 @@ export const createNewSupplier = async (req, res) => {
             .input("city", sql.VarChar, city)
             .input("phone", sql.VarChar, phone)
             .query(querys.addNewSupplier);
-        res.json({ dni, address, phone });
+        res.json({ supplier, address, city, phone });
     } catch (error) {
         res.status(500);
         res.status(error.message);

@@ -111,92 +111,55 @@
                 <div class="card " style="margin: -2%;">
                     <div class="row"  >
                         <!--CARGA DE PRODUCTO-->
-                        <div class="mb-3 col-md-12" style="margin-top: 1%;" id="test">
+                        <div class="mb-3 col-md-12" style="margin-top: 1%;" >
                             <div class="row">
                                 <div class="col-md-12 align-middle">
-                                    <form class="needs-validation" novalidate>
+                                    <div class="needs-validation" novalidate>
                                         <div class="form-row">
                                                 <div class="col-md-3 mb-3">
-                                                    <input type="number" class="form-control" id="validationCustom01" placeholder="Codigo de Producto" value="" required>
+                                                    <input type="number" class="form-control" id="code" placeholder="Codigo de Producto" value="" required>
                                                 </div>
-                                                <div class="col-md-2 mb-3 input-group">
+                                                <div class="col-md-3 mb-3 input-group">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="inputGroupPrepend">$</span>
+                                                        <span class="input-group-text">$</span>
                                                     </div>
-                                                    <input type="number" class="form-control" id="validationCustom03" placeholder="Precio de compra" required>
+                                                    <input type="number" class="form-control" id="price" placeholder="Precio de venta" required>
                                                 </div>
-                                                <div class="col-md-1 mb-3  input-group">
-                                                    <select name="select" id="exampleSelect" class="form-control">
-                                                        <option></option>
-                                                        <option>10</option>
-                                                        <option>20</option>
-                                                        <option>30</option>
-                                                        <option>40</option>
-                                                        <option>50</option>
-                                                        <option>60</option>
-                                                        <option>70</option>
-                                                        <option>80</option>
-                                                        <option>90</option>
-                                                        <option>100</option>
+                                                <div class="col-md-3 mb-3">
+                                                    <input type="number" class="form-control" id="quentity" placeholder="Cantidad" value="" required>
+                                                </div>
+                                                <div class="col-md-3 mb-3  input-group">
+                                                    <select name="select" class="form-control" id="unit" placeholder="Unidad" value="" required>
+                                                        <option>Unidad</option>
+                                                        <option>Kilo</option>
+                                                        <option>Pack</option>
+                                                        <option>Bolsa</option>
+                                                        <option>Bulto</option>
                                                     </select>
-                                                </div>
-                                                <div class="col-md-2 mb-3 input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="inputGroupPrepend">$</span>
-                                                    </div>
-                                                    <input type="number" class="form-control" id="validationCustom03" placeholder="Precio de venta" required>
-                                                </div>
-                                                <div class="col-md-2 mb-3">
-                                                    <input type="number" class="form-control" id="validationCustom02" placeholder="Cantidad" value="" required>
-                                                </div>
-                                                <div class="col-md-2 mb-3">
-                                                    <input type="text" class="form-control" id="validationCustom02" placeholder="Unidad" value="" required>
                                                 </div>
                                                 
                                         </div>
                                         <div class="form-row">
-                                                <div class="col-md-9 mb-3">
-                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Descripcion" required>
+                                                <div class="col-md-3 mb-3">
+                                                    <input type="text" class="form-control" id="brand" placeholder="Marca" value="" required>
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <input type="text" class="form-control" id="description" placeholder="Descripcion" value="" required>
                                                 </div>
                                                 <div class="col-md-1 mb-3">
-                                                    <button class="btn btn-success" type="submit" style="width: 100%; font-size: 110%;">Agregar</button>
+                                                    <button onclick="agregarProducto()" class="btn btn-success" type="submit" style="width: 100%; font-size: 110%;">Agregar</button>
+                                                </div>
+                                                <div class="col-md-1 mb-3" id="botonModificar">
+                                                    <button onclick="actualizarProducto()" class="btn btn-primary" style="width: 100%; font-size: 110%;">Modificar</button>
                                                 </div>
                                                 <div class="col-md-1 mb-3">
-                                                    <button class="btn btn-primary" type="submit" style="width: 100%; font-size: 110%;">Modificar</button>
-                                                </div>
-                                                <div class="col-md-1 mb-3">
-                                                    <button class="btn btn-danger" type="submit" style="width: 100%; font-size: 110%;">Limpiar</button>
+                                                    <button onclick="limpiarInputs('code','price','quentity','unit','description','brand')" class="btn btn-danger" type="submit" style="width: 100%; font-size: 110%;">Limpiar</button>
                                                 </div>
                                         </div>
-                                    
-                                    </form>
-                        
-                                        <script>
-                                            // Example starter JavaScript for disabling form submissions if there are invalid fields
-                                            (function() {
-                                                'use strict';
-                                                window.addEventListener('load', function() {
-                                                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                                                    var forms = document.getElementsByClassName('needs-validation');
-                                                    // Loop over them and prevent submission
-                                                    var validation = Array.prototype.filter.call(forms, function(form) {
-                                                        form.addEventListener('submit', function(event) {
-                                                            if (form.checkValidity() === false) {
-                                                                event.preventDefault();
-                                                                event.stopPropagation();
-                                                            }
-                                                            form.classList.add('was-validated');
-                                                        }, false);
-                                                    });
-                                                }, false);
-                                            })();
-                                        </script>
-                                
-                
+                                    </div>
                                 </div>
                             </div>
                         </div>
-            
               
                     </div>
                     
@@ -222,13 +185,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!--FIN DE COMPRA-->
-                        <div class="d-block card-footer">
-    
-                            
-                        
-                     
-                        </div>
+           
                     </div>
 
 

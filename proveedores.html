@@ -12,6 +12,8 @@
 <body>
 
 
+    
+
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar  closed-sidebar fixed-header">
             
     <div class="app-header header-shadow">
@@ -48,7 +50,6 @@
                     <ul class="vertical-nav-menu ">
 
                        
-
 
                         <li>
                             <a href="ventas.html" >
@@ -106,42 +107,46 @@
 
     
 
+
     <div class="app-main__outer">
         <div class="app-main__inner">
-                
+               
                 <div class="card " style="margin: -2%;">
                     <div class="row"  >
                         <!--CARGA DE PRODUCTO-->
-                        <div class="mb-3 col-md-12" style="margin-top: 1%;" id="test">
+                        <div class="mb-3 col-md-12" style="margin-top: 1%;" >
                             <div class="row">
                                 <div class="col-md-12 align-middle">
-                                    <form class="needs-validation">
+                                    <div class="needs-validation">
                                         <div class="form-row"b id="formula">
                                                 <div class="col-md-3 mb-3">
                                                     <input type="Text" class="form-control" id="supplier" placeholder="Proveedor" value="" required>
                                                 </div>
-                                                <div class="col-md-3 mb-3">
-                                                    <input type="text" class="form-control" id="adress" placeholder="Direccion">
+                                                <div class="col-md-2 mb-3">
+                                                    <input type="text" class="form-control" id="address" placeholder="Direccion" value="" >
                                                 </div>
-                                                <div class="col-md-3 mb-3">
-                                                    <input type="text" class="form-control" id="phone" placeholder="Telefono">
+                                                <div class="col-md-2 mb-3">
+                                                    <input type="text" class="form-control" id="city" placeholder="Ciudad" value="" >
                                                 </div>
-                                                <div class="col-md-1 mb-3">
-                                                    <button class="btn btn-success" type="submit" style="width: 100%; font-size: 110%;">Agregar</button>
-                                                </div>
-                                                <div class="col-md-1 mb-3">
-                                                    <button class="btn btn-primary" type="submit" style="width: 100%; font-size: 110%;">Modificar</button>
+                                                <div class="col-md-2 mb-3">
+                                                    <input type="text" class="form-control" id="phone" placeholder="Telefono" value="" >
                                                 </div>
                                                 <div class="col-md-1 mb-3">
-                                                    <button class="btn btn-danger" type="submit" style="width: 100%; font-size: 110%;">Limpiar</button>
+                                                    <button onclick="agregarProveedor()" class="btn btn-success" type="submit" style="width: 100%; font-size: 110%;">Agregar</button>
+                                                </div>
+                                                <div class="col-md-1 mb-3" id="botonModificar">
+                                                    <button onclick="actualizarProveedor()" class="btn btn-primary" style="width: 100%; font-size: 110%;">Modificar</button>
+                                                </div>
+                                                <div class="col-md-1 mb-3">
+                                                    <button onclick="limpiarInputs('supplier','address','phone')" class="btn btn-danger" type="submit" style="width: 100%; font-size: 110%;">Limpiar</button>
                                                 </div>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+                 
                      <!--TABLA DE PRODUCTOS-->
                     <div class="mb-3 col-md-12">
                        
@@ -149,9 +154,9 @@
                             <table class="align-middle mb-0 table table-borderless table-striped ">
                                 <thead>
                                 <tr>
-                                    <th class="text-center">ID</th>
                                     <th class="text-center">Proveedor</th>
                                     <th class="text-center">Direccion</th>
+                                    <th class="text-center">Ciudad</th>
                                     <th class="text-center">Telefono</th>
                                     <th class="text-center">Modificar</th>
                                     <th class="text-center">Eliminar</th>
@@ -162,22 +167,15 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!--FIN DE COMPRA-->
-                        <div class="d-block card-footer">
-    
-                            
-                        
-                     
-                        </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <script src="./js/main.js"></script>
+
 </body>
 
 </html>
