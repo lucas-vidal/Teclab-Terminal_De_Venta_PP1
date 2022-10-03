@@ -88,9 +88,9 @@ export const getProductByCodeOfTheSale = async (req, res) => {
 
 //Elimina un producto de la venta por el codigo
 export const deleteProductByCodeOfTheSale = async (req, res) => {
-    const { code } = req.params;
+    const {id_sale, code } = req.params;
 
-    if (code == null) {
+    if ( id_sale == null || code == null ) {
         return res.status(400).json({ msg: "Complete todos los campos." })
     }
 
@@ -99,6 +99,7 @@ export const deleteProductByCodeOfTheSale = async (req, res) => {
 
         const result = await pool
             .request()
+            .input("id_sale", id_sale)
             .input("code", code)
             .query(querys.deleteProductByCodeOfTheSale);
 
@@ -110,6 +111,27 @@ export const deleteProductByCodeOfTheSale = async (req, res) => {
 }
 
 
+//Elimina todos los productos de la venta
+export const deleteAllProductOfTheSale = async (req, res) => {
+    const {id_sale } = req.params;
+
+    if ( id_sale == null ) {
+        return res.status(400).json({ msg: "Complete todos los campos." })
+    }
+    try {
+        const pool = await getConnection();
+
+        const result = await pool
+            .request()
+            .input("id_sale", id_sale)
+            .query(querys.deleteAllProductOfTheSale);
+
+        res.sendStatus(204);
+    } catch (error) {
+        res.status(500);
+        res.status(error.message);
+    }
+}
 
 //Contar cantidad de productos en venta
 export const countTotalItemsOfTheSale = async (req, res) => {

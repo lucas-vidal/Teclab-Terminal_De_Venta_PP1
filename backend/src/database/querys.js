@@ -28,7 +28,8 @@ export default{
     getProductByCodeOfTheSale : 'SELECT * FROM sales WHERE id_sale = @id_sale and code = @code',
     countTotalItemsOfTheSale : 'SELECT COUNT (*) FROM sales WHERE id_sale = @id_sale',
     insertAProductToSale : 'DECLARE @id_sale INT; SET @id_sale = (SELECT TOP 1 id_sale FROM id_sales ORDER BY id_sale DESC); INSERT INTO sales (id_sale, code, price, quantity) VALUES (@id_sale, @code, @price, @quantity)',
-    deleteProductByCodeOfTheSale : 'DELETE FROM sale WHERE code = @code and id_sale = @id_sale',
+    deleteProductByCodeOfTheSale : 'DELETE FROM sales WHERE code = @code and id_sale = @id_sale',
+    deleteAllProductOfTheSale : 'DELETE FROM sales WHERE id_sale = @id_sale',
     updateProductsByCodeOfTheSale : 'UPDATE sales SET  price = @price, quantity = @quantity WHERE id_sale = @id_sale',
 
     //ID Ventas

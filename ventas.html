@@ -9,7 +9,7 @@
     <link href="./css/main.css" rel="stylesheet"></head>
 </head>
 
-<body>
+<body onload="cargarProductos(3), sumarProductos(3), cargarClientesEnInput()">
 
 
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar  closed-sidebar fixed-header">
@@ -125,7 +125,7 @@
                 <div class="card " style="margin: -2%;">
                     <div class="row"  >
                         <!--CARGA DE PRODUCTO-->
-                        <div class="mb-3 col-md-8" style="margin-top: 1%;">
+                        <div class="mb-3 col-md-9" style="margin-top: 1%;">
                             <div class="row">
                                 <div class="col-md-12 align-middle">
                                     <div class="needs-validation" novalidate>
@@ -144,7 +144,7 @@
                                                     <input type="text" class="form-control" id="unit" placeholder="Unidad" readonly>
                                                 </div>
                                                 <div class="col-md-2 mb-3">
-                                                    <button onclick="agregarItemVentas()" class="btn btn-success" style="width: 100%; font-size: 110%;">Agregar</button>
+                                                    <button onclick="agregarProductoVenta()" class="btn btn-success" style="width: 100%; font-size: 110%;">Agregar</button>
                                                 </div>
                                                 <div class="col-md-2 mb-3">
                                                     <button onclick="limpiarInputs('code','quantity','price','unit','brand','description')" class="btn btn-danger" style="width: 100%; font-size: 110%;">Limpiar</button>
@@ -169,7 +169,7 @@
                         </div>
             
                         <!--PRECIO TOTAL-->
-                        <div class="mb-3 col-md-4" style="margin-top: 1%;">
+                        <div class="mb-3 col-md-3" style="margin-top: 1%;">
                             <div class="card widget-content bg-midnight-bloom widget-numbers text-center text-white"  style="font-size: 280%;" >
 
                                 <span id="total">$ 0</span>
@@ -185,16 +185,16 @@
                             <table class="align-middle mb-0 table table-borderless table-striped ">
                                 <thead>
                                 <tr>
-                                    <th class="text-center">Item</th>
                                     <th class="text-center">Codigo</th>
+                                    <th class="text-center">Marca</th>
                                     <th class="text-left">Descripcion</th>
                                     <th class="text-center">Cantidad</th>
                                     <th class="text-center">Precio</th>
+                                    <th class="text-center">Unidad</th>
                                     <th class="text-center">Deshacer</th>
-
                                 </tr>
                                 </thead>
-                                <tbody id="registro">
+                                <tbody id="venta">
                                    
                         
                             
@@ -203,13 +203,21 @@
                         </div>
                         <!--FIN DE COMPRA-->
                         <div class="d-block card-footer">
-    
-                            
+                            <div class="row">Cliente
+                                <div class="col-md-3 mb-3  input-group">
+                                    
+                                    <select name="select" class="form-control" id="customer" placeholder="Cliente" value="" required>
+                                        <option></option>
+                                        
+                                    </select>
+                                </div>
                         
-                            <div class="text-center ">
-                                <button class="btn-wide btn btn-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i> CANCELAR</button>
-                                <button class="btn-wide btn btn-success"><i class="pe-7s-check btn-icon-wrapper"> </i>  FINALIZAR</button>
+                                <div class="text-rigth ">
+                                    <button onclick="cancelarVenta(3)" class="btn-wide btn btn-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i> CANCELAR</button>
+                                    <button onclick="" class="btn-wide btn btn-success"><i class="pe-7s-check btn-icon-wrapper"> </i>  FINALIZAR</button>
+                                </div>
                             </div>
+                          
                         </div>
                     </div>
 
@@ -223,7 +231,7 @@
 
 
 
-<script src="./js/main.js"></script>
+<script src="./js/sales.js"></script>
 </body>
 
 </html>

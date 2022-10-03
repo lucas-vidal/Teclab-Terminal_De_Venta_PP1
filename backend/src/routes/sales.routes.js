@@ -1,6 +1,6 @@
 
 import {Router} from 'express'
-import { insertAProductToSale, getSales, getProductsByIdSaleOfTheSale , getProductByCodeOfTheSale, deleteProductByCodeOfTheSale, countTotalItemsOfTheSale, updateProductsByCode
+import { insertAProductToSale, getSales, getProductsByIdSaleOfTheSale , getProductByCodeOfTheSale, deleteProductByCodeOfTheSale, deleteAllProductOfTheSale, countTotalItemsOfTheSale, updateProductsByCode
         } from '../controllers/sales.controller.js'
 
 const router = Router()
@@ -14,8 +14,10 @@ router.get('/sales/:id_sale/:code', getProductByCodeOfTheSale)
 router.get('/sales/count/:id_sale', countTotalItemsOfTheSale)
 //Insertar un producto a la venta
 router.post('/sales', insertAProductToSale)
-//Borrar productos
+//Borrar producto de una venta
 router.delete('/sales/:id_sale/:code', deleteProductByCodeOfTheSale)
+//Borrar todos los productos de una venta
+router.delete('/sales/:id_sale', deleteAllProductOfTheSale)
 //Actualizar productos
 router.put('/sales/:id_sale/:code', updateProductsByCode)
 

@@ -124,7 +124,7 @@ POST {{api_id_sales}}
 Content-Type: application/json
 
      {
-          "dni_customer": "798446"
+          "dni_customer": ""
      }
 
 ### REQUEST CUSTOMERS BY DNI
@@ -153,21 +153,21 @@ POST {{api_sales}}
 Content-Type: application/json
 
      {
-          "code": "168754",
-          "price": "66",
-          "quantity": "2"
+          "code": "6445",
+          "price": "55",
+          "quantity": "788"
      }
 
 ### REQUEST CUSTOMERS BY DNI
 GET {{api_sales}}/5
 
 ### REQUEST CUSTOMERS BY DNI
-GET {{api_sales}}/5/456455
+GET {{api_sales}}/2/1001001
 ### COUNT TOTAL PRODUCT
 PUT {{api_sales}}/count/5
 
 ### DELETE CUSTOMERS
-DELETE {{api_sales}}/3
+DELETE {{api_sales}}/2/100104
 
 ### UPDATE CUSTOMERS
 PUT {{api_sales}}/5
