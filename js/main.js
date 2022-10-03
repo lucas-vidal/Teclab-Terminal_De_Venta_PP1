@@ -1,7 +1,103 @@
 
 const API = 'http://localhost:3000';
 
+///////////////////////----VENTAS----///////////////////////
 
+
+//DETECTAR EL PRODUCTO POR EL CODIGO E INGRESARLO EN LOS INPUTS
+const code = document.querySelector('#code')
+code.addEventListener("change", () => {
+    detectarProducto();
+})
+
+function detectarProducto(){
+var code = document.getElementById("code").value
+document.getElementById("quantity").value = ""
+document.getElementById("price").value = ""
+document.getElementById("unit").value = ""
+document.getElementById("brand").value = ""
+document.getElementById("description").value = ""
+
+const cargarUnProductoEnInputs = async () => {
+    try {
+        const respuesta = await fetch(API + '/products/' + code, {
+                method: 'GET',
+                headers: new Headers({ 'Content-type': 'application/json'}),
+                mode: 'cors'
+            });
+        const products = await respuesta.json();
+
+        document.getElementById("quantity").value = 1
+        document.getElementById("price").value = products[0].price
+        document.getElementById("unit").value = products[0].unit
+        document.getElementById("brand").value = products[0].brand
+        document.getElementById("description").value = products[0].description
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+cargarUnProductoEnInputs();
+}
+
+const quantity = document.querySelector('#quantity')
+quantity.addEventListener("change", () => {
+    sumarPrecioEnProducto();
+})
+
+function sumarPrecioEnProducto(){
+    var price
+    var code = document.getElementById("code").value
+    const consultarPrecioProducto = async () => {
+        try {
+            const respuesta = await fetch(API + '/products/' + code, {
+                    method: 'GET',
+                    headers: new Headers({ 'Content-type': 'application/json'}),
+                    mode: 'cors'
+                });
+            const products = await respuesta.json();
+    
+            price = products[0].price
+            var quantity = parseInt(document.getElementById("quantity").value, 10);
+            var total = price * quantity
+            document.getElementById("price").value = total
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    consultarPrecioProducto();
+}
+
+
+//AGREGAR UN PRODUCTO A LA VENTA
+function agregarProductoVenta(){
+    var code = document.getElementById("code").value
+    var price = document.getElementById("price").value
+    var quantity = document.getElementById("quantity").value
+    const agregarProductoVenta = async () => {
+        try {
+            const respuesta = await fetch(API + '/sales/', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(
+
+                    {
+                        "code": code,
+                        "price": price,
+                        "quantity": quantity,
+                   }
+                  )
+                });
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    agregarProductoVenta();
+    location.reload();
+}
 
 ///////////////////////----PRODUCTOS----///////////////////////
 
@@ -13,21 +109,19 @@ const cargarProductos = async () => {
 
         const HTMLResponse = document.querySelector("#productos")
 
-        products[0].map((product) => HTMLResponse.insertAdjacentHTML("afterbegin",'<tr><td class="text-center">'+ product.code +'</td><td class="text-center">'+ product.brand +'</td><td class="text-left">'+ product.description + '</td><td class="text-center">'+ product.price + '</td><td class="text-center">'+ product.quentity +'</td><td class="text-center">'+ product.unit +'</td><td class="text-center"> <button onclick="modificarProducto(' + product.code + ')" class="mr-2 btn-icon btn-icon-only btn btn-outline-primary"><i class="pe-7s-settings btn-icon-wrapper"> </i></button> </td><td class="text-center"> <button onclick="eliminarProducto(' + product.code + ')" class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button> </td></tr>'));
+        products[0].map((product) => HTMLResponse.insertAdjacentHTML("afterbegin",'<tr><td class="text-center">'+ product.code +'</td><td class="text-center">'+ product.brand +'</td><td class="text-left">'+ product.description + '</td><td class="text-center">'+ product.price + '</td><td class="text-center">'+ product.quantity +'</td><td class="text-center">'+ product.unit +'</td><td class="text-center"> <button onclick="modificarProducto(' + product.code + ')" class="mr-2 btn-icon btn-icon-only btn btn-outline-primary"><i class="pe-7s-settings btn-icon-wrapper"> </i></button> </td><td class="text-center"> <button onclick="eliminarProducto(' + product.code + ')" class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button> </td></tr>'));
 
     } catch (error) {
         console.log(error)
     }
 }
-cargarProductos();
-
 
 //AGREGAR UN PRODUCTO
 function agregarProducto(){
     var code = document.getElementById("code").value
     var brand = document.getElementById("brand").value
     var price = document.getElementById("price").value
-    var quentity = document.getElementById("quentity").value
+    var quantity = document.getElementById("quantity").value
     var unit = document.getElementById("unit").value
     var description = document.getElementById("description").value
     const agregarProducto = async () => {
@@ -42,7 +136,7 @@ function agregarProducto(){
                         "brand": brand,
                         "description": description,
                         "price": price,
-                        "quentity": quentity,
+                        "quantity": quantity,
                         "unit": unit
                         
                    }
@@ -70,7 +164,7 @@ function modificarProducto(code){
     
             document.getElementById("code").value = products[0].code
             document.getElementById("price").value = products[0].price
-            document.getElementById("quentity").value = products[0].quentity
+            document.getElementById("quantity").value = products[0].quantity
             document.getElementById("unit").value = products[0].unit
             document.getElementById("brand").value = products[0].brand
             document.getElementById("description").value = products[0].description
@@ -84,13 +178,12 @@ function modificarProducto(code){
     cargarUnProductoEnInputs();
 }
 
-
 //ACTUALIZA DATOS DE PRODUCTOS
 function actualizarProducto(code){
     var code = document.getElementById("code").value
     var brand = document.getElementById("brand").value
     var price = document.getElementById("price").value
-    var quentity = document.getElementById("quentity").value
+    var quantity = document.getElementById("quantity").value
     var unit = document.getElementById("unit").value
     var description = document.getElementById("description").value
     var option = confirm("Desea modificar este producto?");
@@ -106,7 +199,7 @@ function actualizarProducto(code){
                         "brand": brand,
                         "description": description,
                         "price": price,
-                        "quentity": quentity,
+                        "quantity": quantity,
                         "unit": unit
                    }
                   )
@@ -159,8 +252,6 @@ const cargarClientes = async () => {
         console.log(error)
     }
 }
-cargarClientes();
-
 
 //AGREGAR UN CLIENTES
 function agregarCliente(){
@@ -216,7 +307,6 @@ function modificarCliente(dni){
     }
     cargarUnClienteEnInputs();
 }
-
 
 //ACTUALIZA DATOS DE CLIENTES
 function actualizarCliente(dni){
@@ -288,8 +378,6 @@ const cargarProveedores = async () => {
         console.log(error)
     }
 }
-cargarProveedores();
-
 
 //AGREGAR UN PROVEEDOR
 function agregarProveedor(){
@@ -350,7 +438,6 @@ function modificarProveedor(id){
     }
     cargarUnProveedorEnInputs();
 }
-
 
 //ACTUALIZA DATOS DE PROVEEDOR
 function actualizarProveedor(id){
@@ -419,62 +506,65 @@ function limpiarInputs(in1, in2, in3, in4, in5, in6, in7) {
     document.getElementById(in5).value = ""
     document.getElementById(in6).value = ""
     document.getElementById(in7).value = ""
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var descripcion;
-
-var precio;
-
-function agregarItem(codigo, cantidad)
-{
-codigo = parseInt((document.getElementById('codigo')).value, 10);
-cantidad = parseInt((document.getElementById('cantidad')).value, 10);
-
-if (document.getElementById('codigo').value != "" && document.getElementById('cantidad') != "" ) {
-    const app = document.querySelector("#registro");
-    total = total + precio;
-    item = item + 1;
-
-    var deshacer = '<button onclick="eliminarItem(\'#registro' + item + '\')" class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>';
- 
-    app.insertAdjacentHTML("afterbegin", '<tr id="registro' + item + '"><td class="text-center">'+ item +'</td><td class="text-center">'+ codigo +'</td><td class="text-left">'+ descripcion +'</td><td class="text-center">'+ cantidad +'</td><td class="text-center">'+ precio +'</td><td class="text-center">' + deshacer + '</td></tr>');
-
-    limpiarInput('codigo');
-    limpiarInput('cantidad')
-
-    document.getElementById("total").innerHTML = "$ " + total ;
-
-} else {
-    
-    window.alert("Complete los campos.");
 }
 
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var descripcion;
+
+// var precio;
+
+// function agregarItem(codigo, cantidad)
+// {
+// codigo = parseInt((document.getElementById('codigo')).value, 10);
+// cantidad = parseInt((document.getElementById('cantidad')).value, 10);
+
+// if (document.getElementById('codigo').value != "" && document.getElementById('cantidad') != "" ) {
+//     const app = document.querySelector("#registro");
+//     total = total + precio;
+//     item = item + 1;
+
+//     var deshacer = '<button onclick="eliminarItem(\'#registro' + item + '\')" class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>';
+ 
+//     app.insertAdjacentHTML("afterbegin", '<tr id="registro' + item + '"><td class="text-center">'+ item +'</td><td class="text-center">'+ codigo +'</td><td class="text-left">'+ descripcion +'</td><td class="text-center">'+ cantidad +'</td><td class="text-center">'+ precio +'</td><td class="text-center">' + deshacer + '</td></tr>');
+
+//     limpiarInput('codigo');
+//     limpiarInput('cantidad')
+
+//     document.getElementById("total").innerHTML = "$ " + total ;
+
+// } else {
+    
+//     window.alert("Complete los campos.");
+// }
+
+// };
+
+
+
 
 // document.getElementById('codigo').addEventListener("change","three")
 
@@ -488,16 +578,16 @@ if (document.getElementById('codigo').value != "" && document.getElementById('ca
 
 
 
-function buscarProducto(){
-    window.alert("Se ejecuto ok.");
-    codigo2 = document.getElementById('codigo').value;
-};
+// function buscarProducto(){
+//     window.alert("Se ejecuto ok.");
+//     codigo2 = document.getElementById('codigo').value;
+// };
 
 
-function limpiarInput(id){
-    document.getElementById(id).value = "";
+// function limpiarInput(id){
+//     document.getElementById(id).value = "";
 
-};
+// };
 
 // function eliminarItem(id){
     

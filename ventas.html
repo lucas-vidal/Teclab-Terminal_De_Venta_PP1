@@ -128,29 +128,34 @@
                         <div class="mb-3 col-md-8" style="margin-top: 1%;">
                             <div class="row">
                                 <div class="col-md-12 align-middle">
-                                    <div class="needs-validation" id="cargaItem" novalidate>
+                                    <div class="needs-validation" novalidate>
                                         <div class="form-row">
-                                                <div class="col-md-4 mb-3" >
-                                                    <input type="number" class="form-control" id="codigo" placeholder="Codigo de Producto">
+                                          
+                                                <div class="col-md-2 mb-3" >
+                                                    <input type="text" class="form-control" id="code" placeholder="Codigo de Producto">
                                                 </div>
                                                 <div class="col-md-2 mb-3">
-                                                    <input type="number" class="form-control" id="cantidad" placeholder="Cantidad" >
+                                                    <input type="number" class="form-control" id="quantity" placeholder="Cantidad" >
                                                 </div>
                                                 <div class="col-md-2 mb-3">
-                                                    <input type="text" class="form-control" id="unidad" placeholder="Unidad" >
+                                                    <input type="text" class="form-control" id="price" placeholder="Precio" readonly>
                                                 </div>
                                                 <div class="col-md-2 mb-3">
-                                                    <button onclick="agregarItem()" class="btn btn-success" style="width: 100%; font-size: 110%;">Agregar</button>
+                                                    <input type="text" class="form-control" id="unit" placeholder="Unidad" readonly>
                                                 </div>
                                                 <div class="col-md-2 mb-3">
-                                                    <button onclick="limpiarInput('codigo'),limpiarInput('cantidad')" class="btn btn-danger" style="width: 100%; font-size: 110%;">Limpiar</button>
+                                                    <button onclick="agregarItemVentas()" class="btn btn-success" style="width: 100%; font-size: 110%;">Agregar</button>
+                                                </div>
+                                                <div class="col-md-2 mb-3">
+                                                    <button onclick="limpiarInputs('code','quantity','price','unit','brand','description')" class="btn btn-danger" style="width: 100%; font-size: 110%;">Limpiar</button>
                                                 </div>
                                             </div>
                                         <div class="form-row">
-                                                <div class="col-md-12 mb-3">
-                                                    
-                                                    <input type="text" class="form-control" id="descripcion" placeholder="Descripcion" >
-            
+                                            <div class="col-md-3 mb-3">
+                                                <input type="text" class="form-control" id="brand" placeholder="Marca" readonly>
+                                            </div>
+                                                <div class="col-md-9 mb-3">
+                                                    <input type="text" class="form-control" id="description" placeholder="Descripcion" readonly>
                                                 </div>
                                         </div>
                                     

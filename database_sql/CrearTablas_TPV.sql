@@ -4,7 +4,7 @@ code INT NOT NULL PRIMARY KEY,
 brand VARCHAR(100),
 description TEXT NOT NULL,
 price INT NOT NULL,
-quentity INT NOT NULL,
+quantity INT NOT NULL,
 unit VARCHAR(100) NOT NULL,
 );
 
@@ -22,9 +22,15 @@ city VARCHAR(100),
 phone VARCHAR(100) NOT NULL,
 );
 
+CREATE TABLE users (
+name VARCHAR(100) NOT NULL PRIMARY KEY,
+password VARCHAR(100) NOT NULL,
+level VARCHAR(100) NOT NULL,
+);
+
 CREATE TABLE id_sales (
 id_sale INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-data_time TIMESTAMP NOT NULL,
+data_time DATETIME NOT NULL,
 dni_customer INT,
 );
 
@@ -37,7 +43,7 @@ quantity INT NOT NULL,
 
 CREATE TABLE id_purchases (
 id_purchase INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-data_time TIMESTAMP NOT NULL,
+data_time DATETIME NOT NULL,
 id_supplier INT,
 );
 
