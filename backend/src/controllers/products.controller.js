@@ -16,9 +16,9 @@ export const getProducts = async (req, res) => {
 //Crea nuevo producto
 export const createNewProducts = async (req, res) => {
 
-    const { code, brand, description, price, quentity, unit } = req.body
+    const { code, brand, description, price, quantity, unit } = req.body
 
-    if (code == null || description == null || price == null || quentity == null || unit == null) {
+    if (code == null || description == null || price == null || quantity == null || unit == null) {
 
         return res.status(400).json({ msg: "Complete todos los campos." })
     }
@@ -31,10 +31,10 @@ export const createNewProducts = async (req, res) => {
             .input("brand", sql.VarChar, brand)
             .input("description", sql.Text, description)
             .input("price", sql.Int, price)
-            .input("quentity", sql.Int, quentity)
+            .input("quantity", sql.Int, quantity)
             .input("unit", sql.VarChar, unit)
             .query(querys.addNewProduct);
-        res.json({ code, brand, description, price, quentity, unit });
+        res.json({ code, brand, description, price, quantity, unit });
 
     } catch (error) {
         res.status(500);
@@ -106,10 +106,10 @@ export const getTotalProducts = async (req, res) => {
 //Actualiza un producto
 export const updateProductsByCode = async (req, res) => {
 
-    const { brand, description, price, quentity, unit  } = req.body;
+    const { brand, description, price, quantity, unit  } = req.body;
     const { code } = req.params;
 
-    if (brand == null || description == null || price == null || quentity == null || unit == null) {
+    if (brand == null || description == null || price == null || quantity == null || unit == null) {
         return res.status(400).json({ msg: "Complete todos los campos." })
     }
        
@@ -120,11 +120,11 @@ export const updateProductsByCode = async (req, res) => {
             .input("brand", sql.VarChar, brand)
             .input("description", sql.Text, description)
             .input("price", sql.Int, price)
-            .input("quentity", sql.Int, quentity)
+            .input("quantity", sql.Int, quantity)
             .input("unit", sql.VarChar, unit)
             .input("code", sql.Int, code)
             .query(querys.updateProductsByCode);
-        res.json({ brand, description, price, quentity, unit });
+        res.json({ brand, description, price, quantity, unit });
     } catch (error) {
 
         res.status(500);

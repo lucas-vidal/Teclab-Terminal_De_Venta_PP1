@@ -38,6 +38,6 @@ export default{
     addNewSale :'INSERT INTO id_sales (data_time, dni_customer) VALUES (CURRENT_TIMESTAMP, @dni_customer);',
     deleteIdSaleById : 'DELETE FROM id_sales WHERE id_sale = @id_sale',
     updateIdSalebyId : 'UPDATE id_sales SET data_time = CURRENT_TIMESTAMP, dni_customer = @dni_customer WHERE id_sale = @id_sale',
-
+    getIdLastSale : 'DECLARE @id_sale INT; SET @id_sale = (SELECT TOP 1 id_sale FROM id_sales ORDER BY id_sale DESC); SELECT @id_sale'
 
 }

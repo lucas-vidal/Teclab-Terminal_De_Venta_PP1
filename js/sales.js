@@ -1,6 +1,32 @@
 
 const API = 'http://localhost:3000';
 
+var id_sale
+
+//ID ACTUAL
+function idActual(){
+
+    const idActual = async () => {
+        try {
+            const respuesta = await fetch(API + '/id_sales/id');
+            const id = await respuesta.json();
+            const ids = []
+
+            for (const [key, value] of Object.entries(id[0][0])) {
+                ids.push(`${key}`, value);
+            }
+
+            id_sale = ids[1]
+    cargarProductos(id_sale);
+    sumarProductos(id_sale);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    idActual();
+
+}
+
 //BORRA EL CONTENIDO DE LOS INPUTS
 function limpiarInputs(in1, in2, in3, in4, in5, in6, in7) {
     document.getElementById(in1).value = ""
@@ -83,7 +109,6 @@ function sumarPrecioEnProducto(){
     consultarPrecioProducto();
 }
 
-
 //AGREGAR UN PRODUCTO A LA VENTA
 function agregarProductoVenta(){
     var code = document.getElementById("code").value
@@ -92,10 +117,10 @@ function agregarProductoVenta(){
     var unit = document.getElementById("unit").value
     var description = document.getElementById("description").value
 
-    if (price == NULL && unit == NULL && description == NULL ) {
+    // if (price == NULL && unit == NULL && description == NULL ) {
 
-        window.alert("El producto no existe en la base de datos.")
-    }
+    //     window.alert("El producto no existe en la base de datos.")
+    // }
 
     const agregarProductoVenta = async () => {
         try {
@@ -222,7 +247,7 @@ location.reload();
 }
 
 
-//TOTAL DE LOS ITEMS
+//SUMA EL TOTAL DE LOS ITEMS
 function sumarProductos(id_sale){
     var total = 0
     const cargarProductos = async () => {
@@ -251,6 +276,7 @@ function sumarProductos(id_sale){
     }
 
 
+    //CARGA LOS CLIENTE EN INPUT
     function cargarClientesEnInput(){
 
         const cargarClientes = async () => {
@@ -258,7 +284,7 @@ function sumarProductos(id_sale){
                 const respuesta = await fetch(API + '/customers');
                 const customers = await respuesta.json();
 
-                const HTMLResponse = document.querySelector("#customer")
+                const HTMLResponse = document.querySelector("#dni_customer")
                 customers[0].map((customer) => HTMLResponse.insertAdjacentHTML("afterbegin", '<option>' + customer.dni + ' - ' + customer.surname + ' ' + customer.name + '</option>'));
 
             } catch (error) {
@@ -267,3 +293,69 @@ function sumarProductos(id_sale){
         }
         cargarClientes()
     }
+
+
+    //ACTUALIZA DATOS DE PROVEEDOR
+function finalizaVenta(){
+    let id_sale = 0
+
+    const idActual = async () => {
+        try {
+
+
+
+            const respuesta = await fetch(API + '/id_sales/id');
+            const id = await respuesta.json();
+            const ids = []
+
+            for (const [key, value] of Object.entries(id[0][0])) {
+                ids.push(`${key}`, value);
+            }
+            id_sale = ids[1]
+
+            
+
+
+            var dni_customer = document.getElementById("dni_customer").value
+            console.log(dni_customer)
+            var option = confirm("Finalizar la compra?");
+            if (option == true) {
+            const finalizaVenta = async () => {
+                try {
+                    console.log(id_sale)
+                    const respuesta = await fetch(API + '/id_sales/' + id_sale, {
+                            method: 'PUT',
+                            headers: new Headers({ 'Content-type': 'application/json'}),
+                            mode: 'cors',
+                            body: JSON.stringify(
+                            {
+                                "dni_customer": dni_customer
+                           }
+                          )
+                        });
+        
+                        
+
+                } catch (error) {
+                    console.log(error)
+                }
+            }    
+            
+            finalizaVenta();
+        
+        
+        }
+            
+
+
+
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    idActual();
+
+    
+}

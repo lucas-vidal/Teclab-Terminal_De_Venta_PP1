@@ -20,7 +20,7 @@ Content-Type: application/json
 
 
 ### REQUEST PRODUCT BY CODE
-GET {{api_prod}}/101111
+GET {{api_prod}}/1001013
 
 ### COUNT TOTAL PRODUCT
 GET {{api_prod}}/count
@@ -29,14 +29,14 @@ GET {{api_prod}}/count
 DELETE {{api_prod}}/100103
 
 ### UPDATE PRODUCT
-PUT {{api_prod}}/101111
+PUT {{api_prod}}/1001010
 Content-Type: application/json
 
-{  
-    "brand": "La quesera",
-    "description": "Pan rallado suelto",
-    "price": 350,
-    "quentity": 20,
+{
+    "brand": "Pureza",
+    "description": "Harina 000",
+    "price": 355,
+    "quantity": 20,
     "unit": "Kilo"
 }
 
@@ -66,7 +66,7 @@ GET {{api_customer}}/45678699
 DELETE {{api_customer}}/29885463
 
 ### UPDATE CUSTOMERS
-PUT {{api_customer}}/29885463
+PUT {{api_customer}}/45678699
 Content-Type: application/json
 
      {
@@ -124,21 +124,20 @@ POST {{api_id_sales}}
 Content-Type: application/json
 
      {
-          "dni_customer": "10051"
+          "dni_customer": "6465421"
      }
 
 ### REQUEST CUSTOMERS BY DNI
-GET {{api_id_sales}}/
+GET {{api_id_sales}}/id
 
 ### DELETE CUSTOMERS
 DELETE {{api_id_sales}}/3
 
 ### UPDATE CUSTOMERS
-PUT {{api_id_sales}}/5
+PUT {{api_id_sales}}/2
 Content-Type: application/json
 
      {
-          "data_time": "",
           "dni_customer": 33312345
      }
 
@@ -165,7 +164,7 @@ GET {{api_sales}}/5
 ### REQUEST CUSTOMERS BY DNI
 GET {{api_sales}}/2/1001001
 ### COUNT TOTAL PRODUCT
-PUT {{api_sales}}/count/5
+PUT {{api_sales}}/count/1
 
 ### DELETE CUSTOMERS
 DELETE {{api_sales}}/2/100104

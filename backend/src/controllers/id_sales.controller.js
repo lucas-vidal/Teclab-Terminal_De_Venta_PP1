@@ -35,6 +35,21 @@ export const getIdSalesById = async (req, res) => {
     }
 }
 
+//Consulta un producto por el codigo
+export const getIdLastSale = async (req, res) => {
+    try {
+        const pool = await getConnection();
+
+        const result = await pool
+            .request()
+            .query(querys.getIdLastSale);
+        res.send(result.recordsets);
+    } catch (error) {
+        res.status(500);
+        res.status(error.message);
+    }
+}
+
 //Crea una nueva venta
 export const addNewSale = async (req, res) => {
 
@@ -85,9 +100,9 @@ export const updateIdSalebyId = async (req, res) => {
     const { dni_customer } = req.body;
     const { id_sale } = req.params;
 
-    if ( dni_customer == null ) {
-        return res.status(400).json({ msg: "Complete todos los campos." })
-    }
+    // if ( dni_customer == null ) {
+    //     return res.status(400).json({ msg: "Complete todos los campos." })
+    // }
        
     try {
  const pool = await getConnection();

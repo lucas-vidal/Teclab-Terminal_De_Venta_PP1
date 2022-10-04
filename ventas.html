@@ -9,7 +9,7 @@
     <link href="./css/main.css" rel="stylesheet"></head>
 </head>
 
-<body onload="cargarProductos(5), sumarProductos(5), cargarClientesEnInput()">
+<body onload="idActual(), cargarClientesEnInput()">
 
 
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar  closed-sidebar fixed-header">
@@ -208,15 +208,15 @@
                             <div class="row">Cliente
                                 <div class="col-md-3 mb-3  input-group">
                                     
-                                    <select name="select" class="form-control" id="customer" placeholder="Cliente" value="" required>
+                                    <select name="select" class="form-control" id="dni_customer" placeholder="Cliente" value="" required>
                                         <option></option>
                                         
                                     </select>
                                 </div>
                         
                                 <div class="text-rigth ">
-                                    <button onclick="cancelarVenta(3)" class="btn-wide btn btn-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i> CANCELAR</button>
-                                    <button onclick="" class="btn-wide btn btn-success"><i class="pe-7s-check btn-icon-wrapper"> </i>  FINALIZAR</button>
+                                    <button onclick="cancelarVenta()" class="btn-wide btn btn-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i> CANCELAR</button>
+                                    <button onclick="finalizaVenta()" class="btn-wide btn btn-success"><i class="pe-7s-check btn-icon-wrapper"> </i>  FINALIZAR</button>
                                 </div>
                             </div>
                           
