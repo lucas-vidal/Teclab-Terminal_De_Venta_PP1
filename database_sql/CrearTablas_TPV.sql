@@ -30,7 +30,7 @@ level VARCHAR(100) NOT NULL,
 
 CREATE TABLE id_sales (
 id_sale INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-data_time DATETIME NOT NULL,
+data_time DATETIME,
 dni_customer INT,
 );
 
@@ -43,7 +43,7 @@ quantity INT NOT NULL,
 
 CREATE TABLE id_purchases (
 id_purchase INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-data_time DATETIME NOT NULL,
+data_time DATETIME,
 id_supplier INT,
 );
 

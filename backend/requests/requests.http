@@ -124,7 +124,7 @@ POST {{api_id_sales}}
 Content-Type: application/json
 
      {
-          "dni_customer": ""
+          "dni_customer": "10051"
      }
 
 ### REQUEST CUSTOMERS BY DNI
@@ -138,6 +138,7 @@ PUT {{api_id_sales}}/5
 Content-Type: application/json
 
      {
+          "data_time": "",
           "dni_customer": 33312345
      }
 

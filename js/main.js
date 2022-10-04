@@ -1,6 +1,4 @@
 
-const API = 'http://localhost:3000';
-
 
 //BORRA EL CONTENIDO DE LOS INPUTS
 function limpiarInputs(in1, in2, in3, in4, in5, in6, in7) {

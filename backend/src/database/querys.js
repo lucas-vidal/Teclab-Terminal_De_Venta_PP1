@@ -37,7 +37,7 @@ export default{
     getIdSalesById : 'SELECT * FROM id_sales WHERE id_sale = @id_sale',
     addNewSale :'INSERT INTO id_sales (data_time, dni_customer) VALUES (CURRENT_TIMESTAMP, @dni_customer);',
     deleteIdSaleById : 'DELETE FROM id_sales WHERE id_sale = @id_sale',
-    updateIdSalebyId : 'UPDATE id_sales SET  dni_customer = @dni_customer WHERE id_sale = @id_sale',
+    updateIdSalebyId : 'UPDATE id_sales SET data_time = CURRENT_TIMESTAMP, dni_customer = @dni_customer WHERE id_sale = @id_sale',
 
 
 }

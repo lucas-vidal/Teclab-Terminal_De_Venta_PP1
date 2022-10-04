@@ -89,6 +89,13 @@ function agregarProductoVenta(){
     var code = document.getElementById("code").value
     var price = document.getElementById("price").value
     var quantity = document.getElementById("quantity").value
+    var unit = document.getElementById("unit").value
+    var description = document.getElementById("description").value
+
+    if (price == NULL && unit == NULL && description == NULL ) {
+
+        window.alert("El producto no existe en la base de datos.")
+    }
 
     const agregarProductoVenta = async () => {
         try {
@@ -112,6 +119,7 @@ function agregarProductoVenta(){
     agregarProductoVenta();
     location.reload();
 }
+
 
 //CARGA LISTADO DE PRODUCTOS EN LA VENTA
 function cargarProductos(id_sale){
@@ -145,8 +153,8 @@ const cargarProductos = async () => {
                 + code +'</td><td class="text-center">'
                 + brand +'</td><td class="text-left">'
                 + description + '</td><td class="text-center">'
-                + quantity + '</td><td class="text-center">'
-                + price +'</td><td class="text-center">'
+                + quantity + '</td><td class="text-center"> $ '
+                + price +',0</td><td class="text-center">'
                 + unit +'</td><td class="text-center"> <button onclick="eliminarProducto('
                 + code + ')" class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button> </td></tr>');
             }
