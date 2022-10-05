@@ -23,7 +23,7 @@ Content-Type: application/json
 GET {{api_prod}}/1001013
 
 ### COUNT TOTAL PRODUCT
-GET {{api_prod}}/count
+POST {{api_prod}}/count
 
 ### DELETE PRODUCT
 DELETE {{api_prod}}/100103
@@ -159,12 +159,12 @@ Content-Type: application/json
      }
 
 ### REQUEST CUSTOMERS BY DNI
-GET {{api_sales}}/5
+GET {{api_sales}}/3
 
 ### REQUEST CUSTOMERS BY DNI
-GET {{api_sales}}/2/1001001
+GET {{api_sales}}/2/1001006
 ### COUNT TOTAL PRODUCT
-PUT {{api_sales}}/count/1
+POST {{api_sales}}/count/1
 
 ### DELETE CUSTOMERS
 DELETE {{api_sales}}/2/100104

@@ -89,13 +89,13 @@ export const deleteProductByCode = async (req, res) => {
 
 //Contar cantidad de productos en tabla
 export const getTotalProducts = async (req, res) => {
-
-    try {
     const pool = await getConnection();
     const result = await pool
         .request()
         .query(querys.getTotalProducts);
     res.json(result.recordsets);
+    try {
+
 
     } catch (error) {
         res.status(500);

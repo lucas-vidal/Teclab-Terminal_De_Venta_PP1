@@ -76,3 +76,60 @@ function cargarVentas(){
     }
     cargarVentas()
     }
+
+
+
+
+
+    //ELIMINAR VENTA Y SUS PRODUCTOS
+function elimianarVenta(){
+
+    var id_sale
+    const idActual = async () => {
+        try {
+            const respuesta = await fetch(API + '/id_sales/id');
+            const id = await respuesta.json();
+            const ids = []
+
+            for (const [key, value] of Object.entries(id[0][0])) {
+                ids.push(`${key}`, value);
+            }
+
+            id_sale = ids[1]
+
+
+
+            var option = confirm("Desea eliminar este producto?");
+            if (option == true) {
+                const eliminarProductosDeVenta = async () => {
+                try {
+                    console.log(id_sale)
+                    const respuesta = await fetch(API + '/sales/' + id_sale, {
+                            method: 'DELETE',
+                            headers: {'Content-type': 'application/json'}
+                        })
+                        const eliminarVenta = async () => {
+                            try {
+                                const respuesta = await fetch(API + '/id_sales/' + id_sale, {
+                                        method: 'DELETE',
+                                        headers: {'Content-type': 'application/json'}
+                                    })
+                                } catch (error) {
+                                console.log(error)
+                                };
+                            }
+                        eliminarVenta();
+                    } catch (error) {
+                    console.log(error)
+                    };
+                }
+                eliminarProductosDeVenta();
+            } 
+        } catch (error) {
+            console.log(error)
+            };
+    
+}
+idActual();  
+ location.reload();
+}

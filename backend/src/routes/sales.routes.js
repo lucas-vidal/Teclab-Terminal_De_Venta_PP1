@@ -11,7 +11,7 @@ router.get('/sales/:id_sale', getProductsByIdSaleOfTheSale)
 //Consulta una venta por ID
 router.get('/sales/:id_sale/:code', getProductByCodeOfTheSale)
 //Contar total de productos
-router.get('/sales/count/:id_sale', countTotalItemsOfTheSale)
+router.post('/sales/count/:id_sale', countTotalItemsOfTheSale)
 //Insertar un producto a la venta
 router.post('/sales', insertAProductToSale)
 //Borrar producto de una venta

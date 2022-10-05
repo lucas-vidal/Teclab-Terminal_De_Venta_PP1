@@ -19,11 +19,50 @@ function idActual(){
             id_sale = ids[1]
     cargarProductos(id_sale);
     sumarProductos(id_sale);
+    botonesCancelarFinalizar(id_sale)
         } catch (error) {
             console.log(error)
         }
     }
     idActual();
+
+}
+
+//CARGA LOS BOTONES DE FINALIZAR Y CANCELAR
+function botonesCancelarFinalizar(id_sale){
+var countProd
+
+    const cantProd = async () => {
+        try {
+
+            const respuesta = await fetch(API + '/sales/count/' + id_sale, {
+                method: 'POST',
+                headers: new Headers({ 'Content-type': 'application/json'}),
+                mode: 'cors'
+            });
+            const counts = await respuesta.json();
+            const count = []
+
+            for (const [key, value] of Object.entries(counts[0][0])) {
+                count.push(`${key}`, value);
+            }
+
+            countProd = count[1]
+            console.log(countProd)
+
+            if( countProd != 0 ){
+                const HTMLResponse = document.querySelector("#footer")
+                HTMLResponse.insertAdjacentHTML("afterbegin",
+                '<div class="row"><div class="col-md-3 mb-3  input-group"><select name="select" class="form-control" id="dni_customer" placeholder="Cliente" value="" required><option></option></select></div><div class="text-rigth "><button onclick="cancelarVenta()" class="btn-wide btn btn-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i> CANCELAR</button><button onclick="finalizaVenta()" class="btn-wide btn btn-success"><i class="pe-7s-check btn-icon-wrapper"> </i>  FINALIZAR</button></div></div>');
+                cargarClientesEnInput()
+                //  <div class="row"><div class="col-md-3 mb-3  input-group"><select name="select" class="form-control" id="dni_customer" placeholder="Cliente" value="" required><option></option></select></div><div class="text-rigth "><button onclick="cancelarVenta()" class="btn-wide btn btn-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i> CANCELAR</button><button onclick="finalizaVenta()" class="btn-wide btn btn-success"><i class="pe-7s-check btn-icon-wrapper"> </i>  FINALIZAR</button></div></div>
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    cantProd();
+
 
 }
 
@@ -37,8 +76,6 @@ function limpiarInputs(in1, in2, in3, in4, in5, in6, in7) {
     document.getElementById(in6).value = ""
     document.getElementById(in7).value = ""
 }
-
-///////////////////////----VENTAS----///////////////////////
 
 
 //DETECTAR EL PRODUCTO POR EL CODIGO E INGRESARLO EN LOS INPUTS
@@ -77,8 +114,7 @@ const cargarUnProductoEnInputs = async () => {
 cargarUnProductoEnInputs();
 }
 
-
-//MULTIPLICA LA CANTIDAD POR EL PRECIO Y MUESTRA EN INPUT
+//MULTIPLICA LA CANTIDAD POR EL PRECIO Y MUESTRA EN INPUT CADA VEZ QUE CAMBIA LA CANTIDAD
 const quantity = document.querySelector('#quantity')
 quantity.addEventListener("change", () => {
     sumarPrecioEnProducto();
@@ -105,7 +141,6 @@ function sumarPrecioEnProducto(){
             console.log(error)
         }
     }
-
     consultarPrecioProducto();
 }
 
@@ -117,11 +152,10 @@ function agregarProductoVenta(){
     var unit = document.getElementById("unit").value
     var description = document.getElementById("description").value
 
-    // if (price == NULL && unit == NULL && description == NULL ) {
+    if (price == "" && unit == "" && description == "" ) {
 
-    //     window.alert("El producto no existe en la base de datos.")
-    // }
-
+        return window.alert("El producto no existe en la base de datos.")
+    }
     const agregarProductoVenta = async () => {
         try {
             const respuesta = await fetch(API + '/sales/', {
@@ -136,7 +170,6 @@ function agregarProductoVenta(){
                    }
                   )
                 });
-
         } catch (error) {
             console.log(error)
         }
@@ -146,14 +179,13 @@ function agregarProductoVenta(){
 }
 
 
-//CARGA LISTADO DE PRODUCTOS EN LA VENTA
+//CARGA LISTADO DE PRODUCTOS DE LA VENTA ACTUAL
 function cargarProductos(id_sale){
 const cargarProductos = async () => {
     try {
 
         const respuesta1 = await fetch(API + '/sales/' + id_sale);
         const products = await respuesta1.json();
-
 
         const HTMLResponse = document.querySelector("#venta")
 
@@ -185,7 +217,6 @@ const cargarProductos = async () => {
             }
             cargarProducto2()
         }
-       
     } catch (error) {
         console.log(error)
     }
@@ -193,61 +224,87 @@ const cargarProductos = async () => {
 cargarProductos()
 }
 
-//BOTON ELIMINAR EN LISTADO DE PRDUCTOS
+//BOTON ELIMINAR ITEM EN LISTADO DE PRDUCTOS
 function eliminarProducto(code){
-    var option = confirm("Desea eliminar este producto?");
-    if (option == true) {
-            const eliminarProducto = async () => {
+var id_sale
+    const idActual = async () => {
         try {
-            const respuesta = await fetch(API + '/sales/2/' + code, {
-                    method: 'DELETE',
-                    headers: {'Content-type': 'application/json'}
-                })
+            const respuesta = await fetch(API + '/id_sales/id');
+            const id = await respuesta.json();
+            const ids = []
+
+            for (const [key, value] of Object.entries(id[0][0])) {
+                ids.push(`${key}`, value);
+            }
+
+            id_sale = ids[1]
+
+            var option = confirm("Desea eliminar este producto?");
+            if (option == true) {
+                    const eliminarProducto = async () => {
+                try {
+                    const respuesta = await fetch(API + '/sales/'+ id_sale +'/' + code, {
+                            method: 'DELETE',
+                            headers: {'Content-type': 'application/json'}
+                        })
+                } catch (error) {
+                    console.log(error)
+                };
+        }
+        eliminarProducto();
+        location.reload();
+            } 
         } catch (error) {
             console.log(error)
         }
-        ;
-}
-eliminarProducto();
-location.reload();
-	} 
-
+    }
+    idActual();
 }
 
 //BOTON CANCELAR VENTA
-function cancelarVenta(id_sale){
-    var option = confirm("Desea eliminar este producto?");
-    if (option == true) {
-        const eliminarProductosDeVenta = async () => {
+function cancelarVenta(){
+
+    var id_sale
+    const idActual = async () => {
         try {
-            const respuesta = await fetch(API + '/sales/' + id_sale, {
-                    method: 'DELETE',
-                    headers: {'Content-type': 'application/json'}
-                })
-            } catch (error) {
-            console.log(error)
-            };
-        }
-        const eliminarVenta = async () => {
-            try {
-                const respuesta = await fetch(API + '/id_sales/' + id_sale, {
-                        method: 'DELETE',
-                        headers: {'Content-type': 'application/json'}
-                    })
-                } catch (error) {
-                console.log(error)
-                };
+            const respuesta = await fetch(API + '/id_sales/id');
+            const id = await respuesta.json();
+            const ids = []
+
+            for (const [key, value] of Object.entries(id[0][0])) {
+                ids.push(`${key}`, value);
             }
 
-eliminarVenta();
-eliminarProductosDeVenta();
-location.reload();
-	} 
+            id_sale = ids[1]
+
+            var option = confirm("Desea eliminar esta venta?");
+            if (option == true) {
+                const eliminarProductosDeVenta = async () => {
+                try {
+                    console.log(id_sale)
+                    const respuesta = await fetch(API + '/sales/' + id_sale, {
+                            method: 'DELETE',
+                            headers: {'Content-type': 'application/json'}
+                        })
+
+                       
+                    } catch (error) {
+                    console.log(error)
+                    };
+                }
+                eliminarProductosDeVenta();
+                location.reload();
+            } 
+        } catch (error) {
+            console.log(error)
+            };
+    
+}
+idActual();  
 
 }
 
-
-//SUMA EL TOTAL DE LOS ITEMS
+//SUMA EL TOTAL DE LOS ITEMS 
 function sumarProductos(id_sale){
     var total = 0
     const cargarProductos = async () => {
@@ -285,7 +342,8 @@ function sumarProductos(id_sale){
                 const customers = await respuesta.json();
 
                 const HTMLResponse = document.querySelector("#dni_customer")
-                customers[0].map((customer) => HTMLResponse.insertAdjacentHTML("afterbegin", '<option>' + customer.dni + ' - ' + customer.surname + ' ' + customer.name + '</option>'));
+                customers[0].map((customer) => HTMLResponse.insertAdjacentHTML("afterbegin", '<option>' + customer.dni + '</option>'));
+                // HTMLResponse.insertAdjacentHTML("afterbegin", '<option>' + customer.dni + ' - ' + customer.surname + ' ' + customer.name + '</option>')
 
             } catch (error) {
                 console.log(error)
@@ -294,68 +352,66 @@ function sumarProductos(id_sale){
         cargarClientes()
     }
 
+    //FINALIZA LA VENTA
+    function finalizaVenta(){
+        var id_sale = 0
 
-    //ACTUALIZA DATOS DE PROVEEDOR
-function finalizaVenta(){
-    let id_sale = 0
+        const idActual = async () => {
+            try {
+                const respuesta = await fetch(API + '/id_sales/id');
+                const id = await respuesta.json();
+                const ids = []
 
-    const idActual = async () => {
-        try {
-
-
-
-            const respuesta = await fetch(API + '/id_sales/id');
-            const id = await respuesta.json();
-            const ids = []
-
-            for (const [key, value] of Object.entries(id[0][0])) {
-                ids.push(`${key}`, value);
-            }
-            id_sale = ids[1]
-
-            
-
-
-            var dni_customer = document.getElementById("dni_customer").value
-            console.log(dni_customer)
-            var option = confirm("Finalizar la compra?");
-            if (option == true) {
-            const finalizaVenta = async () => {
-                try {
-                    console.log(id_sale)
-                    const respuesta = await fetch(API + '/id_sales/' + id_sale, {
-                            method: 'PUT',
-                            headers: new Headers({ 'Content-type': 'application/json'}),
-                            mode: 'cors',
-                            body: JSON.stringify(
-                            {
-                                "dni_customer": dni_customer
-                           }
-                          )
-                        });
-        
-                        
-
-                } catch (error) {
-                    console.log(error)
+                for (const [key, value] of Object.entries(id[0][0])) {
+                    ids.push(`${key}`, value);
                 }
-            }    
+                id_sale = ids[1]
+                var dni_customer = document.getElementById("dni_customer").value
+                var option = confirm("Finalizar la compra?");
+                if (option == true) {
+                const finalizaVenta = async () => {
+                    try {
+                        console.log(id_sale , dni_customer)
+                        const respuesta = await fetch(API + '/id_sales/' + id_sale, {
+                                method: 'PUT',
+                                headers: new Headers({ 'Content-type': 'application/json'}),
+                                mode: 'cors',
+                                body: JSON.stringify(
+
+                                {
+                                    "dni_customer": dni_customer
+                                })
+                            });
             
-            finalizaVenta();
-        
-        
+                            const agregarProducto = async () => {
+                                try {
+                                    const respuesta = await fetch(API + '/id_sales/', {
+                                            method: 'POST',
+                                            headers: {'Content-Type': 'application/json'},
+                                            body: JSON.stringify(
+                        
+                                            {
+                                                "dni_customer": ""
+                                        }
+                                        )
+                                        });
+
+                                } catch (error) {
+                                    console.log(error)
+                                }
+                            }
+                            agregarProducto();
+                            location.reload();
+                    } catch (error) {
+                        console.log(error)
+                    }
+                }    
+                finalizaVenta();
+            }
+            } catch (error) {
+                console.log(error)
+            }
         }
-            
-
-
-
-
-        } catch (error) {
-            console.log(error)
-        }
+        idActual();
     }
 
-    idActual();
-
-    
-}

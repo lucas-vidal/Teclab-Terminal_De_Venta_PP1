@@ -9,7 +9,7 @@ router.get('/products', getProducts)
 //Consulta una linea de productos
 router.get('/products/:code', getProductByCode)
 //Contar total de productos
-router.get('/products/count', getTotalProducts)
+router.post('/products/count', getTotalProducts)
 //Insertar un producto
 router.post('/products', createNewProducts)
 //Borrar productos
