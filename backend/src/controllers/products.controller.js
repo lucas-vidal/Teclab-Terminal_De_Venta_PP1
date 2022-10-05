@@ -131,3 +131,29 @@ export const updateProductsByCode = async (req, res) => {
         res.status(error.message);
     };
 }
+
+
+//Actualiza cantidad en un producto
+export const updateQuantityProductsByCode = async (req, res) => {
+
+    const { quantity } = req.body;
+    const { code } = req.params;
+
+    if ( quantity == null) {
+        return res.status(400).json({ msg: "Complete todos los campos." })
+    }
+       
+    try {
+ const pool = await getConnection();
+        await pool
+            .request()
+            .input("quantity", sql.Int, quantity)
+            .input("code", sql.Int, code)
+            .query(querys.updateQuantityProductsByCode);
+        res.json({ code, quantity });
+    } catch (error) {
+
+        res.status(500);
+        res.status(error.message);
+    };
+}

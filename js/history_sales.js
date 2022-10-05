@@ -56,15 +56,15 @@ function cargarVentas(){
                     var surname = customer[0].surname
     console.log('lala' +name + surname)
 
-                // sales[0].map((sale) => HTMLResponse.insertAdjacentHTML(
-                //     "afterbegin",'<tr><td class="text-center">'
-                //     + sale.id_sale +'</td><td class="text-center">'
-                //     + sale.data_time +'</td><td class="text-left">'
-                //     + name + ' ' + surname + '</td><td class="text-center">'
-                //     + items + '</td><td class="text-center">'
-                //     + total +'</td><td class="text-center"> <button onclick="verDetalle(' 
-                //     + sale.id_sale + ')" class="mr-2 btn-icon btn-icon-only btn btn-primary">Ver más</button></td><td class="text-center"> <button onclick="eliminarVenta('
-                //     + sale.id_sale + ')" class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button></td></tr>'));
+                sales[0].map((sale) => HTMLResponse.insertAdjacentHTML(
+                    "afterbegin",'<tr><td class="text-center">'
+                    + sale.id_sale +'</td><td class="text-center">'
+                    + sale.data_time +'</td><td class="text-left">'
+                    + name + ' ' + surname + '</td><td class="text-center">'
+                    + items + '</td><td class="text-center">'
+                    + total +'</td><td class="text-center"> <button onclick="verDetalle(' 
+                    + sale.id_sale + ')" class="mr-2 btn-icon btn-icon-only btn btn-primary">Ver más</button></td><td class="text-center"> <button onclick="eliminarVenta('
+                    + sale.id_sale + ')" class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button></td></tr>'));
 
                 }
                 cargarVentas2()

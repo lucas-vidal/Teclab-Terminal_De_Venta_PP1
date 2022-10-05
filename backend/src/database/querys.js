@@ -7,6 +7,7 @@ export default{
     deleteProductByCode : 'DELETE FROM products WHERE code = @code',
     getTotalProducts : 'SELECT COUNT (*) FROM products',
     updateProductsByCode : 'UPDATE products SET brand = @brand, description = @description, price = @price, quantity = @quantity, unit = @unit WHERE code = @code',
+    updateQuantityProductsByCode : 'UPDATE products SET quantity = @quantity WHERE code = @code',
 
     //Clientes
     getAllCustomers : 'SELECT * FROM customers',
