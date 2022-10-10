@@ -25,6 +25,7 @@ function idActual() {
         }
     }
     idActual();
+    document.querySelector("#code").select()
 
 }
 
@@ -48,7 +49,6 @@ function botonesCancelarFinalizar(id_sale) {
             }
 
             countProd = count[1]
-            console.log(countProd)
 
             if (countProd != 0) {
                 const HTMLResponse = document.querySelector("#footer")
@@ -378,6 +378,11 @@ function cargarClientesEnInput() {
 //FINALIZA LA VENTA
 function finalizaVenta() {
     var id_sale = 0
+    function reload()
+    {
+        location.reload();
+        // console.log(123)
+    }
 
     const idActual = async () => {
         try {
@@ -389,24 +394,53 @@ function finalizaVenta() {
                 ids.push(`${key}`, value);
             }
             id_sale = ids[1]
-            var dni_customer = document.getElementById("dni_customer").value
             var option = confirm("Finalizar la compra?");
             if (option == true) {
                 const finalizaVenta = async () => {
                     try {
+                        restarCantidades(id_sale)
+                        function restarCantidades() {
+                            const restarCantidades = async () => {
+                                try {
+                        
+                                    const respuesta = await fetch(API + '/sales/' + id_sale);
+                                    const products = await respuesta.json();
+                            
+                                    products.forEach(product => { mapearProductos(product)});
+                        
+                                    function mapearProductos(product) {
+                        
+                                        var code = product.code
+                                        var quantity = product.quantity
+                        
+                                        const restarCantidadDeProducto = async () => {
+                                            const respuesta2 = await fetch(API + '/products/' + code);
+                                            const product = await respuesta2.json();
+                        
+                                            var quantity1 = product[0].quantity
+                        
+                                                    const respuesta1 = await fetch(API + '/products/quantity/' + code, {
+                                                            method: 'PUT',
+                                                            headers: new Headers({ 'Content-type': 'application/json'}),
+                                                            mode: 'cors',
+                                                            body: JSON.stringify(
+                                                            {
+                                                                "quantity": quantity1 - quantity
+                                                        })
+                                                        },
+                                                        );
 
+                                        }
+                                        restarCantidadDeProducto()
+                                    }
+                                } catch (error) {
+                                    console.log(error)
+                                }
+                            }
+                            restarCantidades()
+                        }
 
-
-
-
-
-
-
-
-
-
-
-
+                        var dni_customer = document.getElementById("dni_customer").value
 
                         const respuesta = await fetch(API + '/id_sales/' + id_sale, {
                             method: 'PUT',
@@ -418,8 +452,7 @@ function finalizaVenta() {
                                     "dni_customer": dni_customer
                                 })
                         });
-
-                        const agregarProducto = async () => {
+                        const crearNuevoId = async () => {
                             try {
                                 const respuesta = await fetch(API + '/id_sales/', {
                                     method: 'POST',
@@ -430,14 +463,14 @@ function finalizaVenta() {
                                             "dni_customer": ""
                                         }
                                     )
-                                });
-
+                                },
+                                setTimeout(reload, 500)
+                                );
                             } catch (error) {
                                 console.log(error)
                             }
                         }
-                        agregarProducto();
-                        location.reload();
+                        crearNuevoId();
                     } catch (error) {
                         console.log(error)
                     }
@@ -451,63 +484,3 @@ function finalizaVenta() {
     idActual();
 }
 
-
-
-// var code = document.getElementById("code").value
-// var quantity = document.getElementById("quantity").value
-
-
-function restarCantidades(){
-var quantity_stk
-var quantity
-var code
-
-const restarCantidades1 = async () => {
-    try {
-        const respuesta = await fetch(API + '/sales/' + 6);
-        const products = await respuesta.json();
-
-        products.map((product) => restaCantidadPorProducto(product))
-
-            function restaCantidadPorProducto(product) {
-                
-                quantity = product.quantity
-                code = product.code
-                console.log('cantidad stock: ' + quantity_stk + ' cantidad vendida: ' + quantity + ' codigo: ' + code)
-
-                const cantidadActualDeProducto = async () => {
-                    try {
-                        const respuesta = await fetch(API + '/products/' + code, {
-                            method: 'GET',
-                            headers: new Headers({ 'Content-type': 'application/json' }),
-                            mode: 'cors'
-                        });
-                        const products = await respuesta.json();
-                            quantity_stk = products[0].quantity
-                            console.log('cantidad stock: ' + quantity_stk + ' cantidad vendida: ' + quantity + ' codigo: ' + code)
-
-                            console.log(quantity_stk)
-
-                                    // const respuesta1 = await fetch(API + '/products/quantity/' + code, {
-                                    //         method: 'PUT',
-                                    //         headers: new Headers({ 'Content-type': 'application/json'}),
-                                    //         mode: 'cors',
-                                    //         body: JSON.stringify(
-                                    //         {
-                                    //             "quantity": quantity_stk - quantity
-                                    //     })
-                                    //     });
-               
-
-                        } catch (error) {
-                            console.log(error)
-                        }
-                }
-                cantidadActualDeProducto();
-            }
-    } catch (error) {
-        console.log(error)
-    }
-}
-restarCantidades1()
-}

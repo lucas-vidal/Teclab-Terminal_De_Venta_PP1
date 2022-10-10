@@ -9,7 +9,7 @@
     <link href="./css/main.css" rel="stylesheet"></head>
 </head>
 
-<body>
+<body onload="cargarVenta()">
 
 
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar  closed-sidebar fixed-header">
@@ -42,11 +42,9 @@
 
                     <ul class="vertical-nav-menu ">
 
-                       
-
 
                         <li>
-                            <a href="" class="mm-active">
+                            <a href="ventas.html" class="mm-active">
                                 <i class="metismenu-icon fa fa-cash-register"></i>
                                 Ventas
                             </a>
@@ -110,9 +108,9 @@
                         <div class="mb-3 col-md-8" style="margin-top: 1%;">
                             <div class="row">
                                 <div class="col-md-12 ">
-                                   <div class="row" style="font-size: large; font-size: 200%; margin-left: 2%;">Cliente: &nbsp<b>Gomez Julia</b> </div>
+                                   <div class="row" style="font-size: large; font-size: 200%; margin-left: 2%;">Cliente: &nbsp<b id="cliente"></b>&nbsp &nbsp &nbsp &nbsp DNI: &nbsp<b id="dni"></b>  </div>
                         
-                                   <div class="row" style="font-size: large; font-size: 150%; margin-left: 2%;">Fecha: &nbsp29/06/2022 12:23:06</div>
+                                   <div class="row" style="font-size: large; font-size: 150%; margin-left: 2%;">Fecha: &nbsp<div id="fecha_hora"></div></div>
                                 
                 
                                 </div>
@@ -123,7 +121,7 @@
                         <div class="mb-3 col-md-4" style="margin-top: 1%;">
                             <div class="card widget-content bg-midnight-bloom widget-numbers text-center text-white"  style="font-size: 280%;" >
 
-                                <span>$ 1.568,30</span>
+                                <span id="total">$ 0,0</span>
                             </div>
                             
                         </div>
@@ -136,79 +134,27 @@
                             <table class="align-middle mb-0 table table-borderless table-striped ">
                                 <thead>
                                 <tr>
-                                    <th class="text-center">Item</th>
-                                    <th>Codigo</th>
-                                    <th>Descripcion</th>
+                                    <th class="text-center">Codigo</th>
+                                    <th class="text-center">Marca</th>
+                                    <th class="text-left">Descripcion</th>
                                     <th class="text-center">Cantidad</th>
                                     <th class="text-center">Precio</th>
+                                    <th class="text-center">Unidad</th>
                                     <th class="text-center">Deshacer</th>
 
                                 </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="text-center">1</td>
-                                        <td class="text-left">790040138898</td>
-                                        <td class="text-left">Coca Cola 2,5L Botella</td>
-                                        <td class="text-center">3</td>
-                                        <td class="text-center">$260,50</td>
-                                        <td class="text-center">
-                                            <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">2</td>
-                                        <td class="text-left">790040138898</td>
-                                        <td class="text-left">Luchetti Fideos largos 1kg</td>
-                                        <td class="text-center">2</td>
-                                        <td class="text-center">$120,00</td>
-                                        <td class="text-center">
-                                            <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">3</td>
-                                        <td class="text-left">790040138898</td>
-                                        <td class="text-left">Mama Cocina Pure de papas instantaneo 300gr</td>
-                                        <td class="text-center">1</td>
-                                        <td class="text-center">$200,00</td>
-                                        <td class="text-center">
-                                            <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">4</td>
-                                        <td class="text-left">790040138898</td>
-                                        <td class="text-left">Cañuelas Aceite 1L</td>
-                                        <td class="text-center">1</td>
-                                        <td class="text-center">$660,00</td>
-                                        <td class="text-center">
-                                            <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">5</td>
-                                        <td class="text-left">790040138898</td>
-                                        <td class="text-left">Harina 000 Favorita 1Kg</td>
-                                        <td class="text-center">1</td>
-                                        <td class="text-center">$160,00</td>
-                                        <td class="text-center">
-                                            <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
-                                        </td>
-                                    </tr>
-                            
+                                <tbody id="venta">
+                       
+                                    
+
                                 </tbody>
                             </table>
                         </div>
                         <!--FIN DE COMPRA-->
                         <div class="d-block card-footer">
     
-                            
-                        
-                            <div class="text-center ">
-                                <button class="btn-wide btn btn-danger"> CERRAR</button>
-                                
-                            </div>
+
                         </div>
                     </div>
 
@@ -218,6 +164,7 @@
         </div>
     </div>
 </div>
+<script src="./js/detail_sales.js"></script>
 
 </body>
 
