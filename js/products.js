@@ -26,7 +26,7 @@ const cargarProductos = async () => {
 
         products[0].map((product) => HTMLResponse.insertAdjacentHTML(
             "afterbegin",'<tr><td class="text-center">'+ product.code +'</td><td class="text-center">'
-            + product.brand +'</td><td class="text-left">'+ product.description + '</td><td class="text-center">'
+            + product.brand +'</td><td class="text-left">'+ product.description + '</td><td class="text-center">$'
             + product.price + '</td><td class="text-center">'+ product.quantity +'</td><td class="text-center">'
             + product.unit +'</td><td class="text-center"> <button onclick="modificarProducto(' + product.code + 
             ')" class="mr-2 btn-icon btn-icon-only btn btn-outline-primary"><i class="pe-7s-settings btn-icon-wrapper"> </i></button> </td><td class="text-center"> <button onclick="eliminarProducto('
